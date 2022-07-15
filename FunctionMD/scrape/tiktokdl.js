@@ -4,7 +4,7 @@ const cheerio = require('cheerio')
 async function TiktokDownloader (Url) {
 	return new Promise (async (resolve, reject) => {
 		await axios.request({
-			url: "https://ttsave.app/id/",
+			url: ""https://ttdownloader.com/",
 			method: "GET",
 			headers: {
 				"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
@@ -16,7 +16,7 @@ async function TiktokDownloader (Url) {
 			const $ = cheerio.load(respon.data)
 			const token = $('#token').attr('value')
 			axios({
-				url: "https://ttsave.app/id/",
+				url: ""https://ttdownloader.com/",
 				method: "POST",
 				data: new URLSearchParams(Object.entries({url: Url, format: "", token: token})),
 				headers: {
