@@ -230,6 +230,8 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}revoke
 ➭ ${prefix}afk
 ➭ ${prefix}broadcast (Owner)
+➭ ${prefix}hidetag <teks>
+➭ ${prefix}tagall <teks>
 
 ✘ *D O W N L O A D - M E N U*
 
@@ -1621,12 +1623,24 @@ _Mengirim file..._`
 reply(result4)
 sock.sendMessage(from, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }) 
 break
-case 'hidetag':{
-if (isBan) return m.reply(mess.ban)
-if (!m.isGroup) return m.reply(mess.group)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
-mans.sendMessage(m.chat, { text : args.join(" ") ? args.join(" ") : '' , mentions: participants.map(a => a.id)}, { quoted: m })
+case 'hidetag':
+if (!isGroup) return reply('Khusus Grup')
+if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
+let mem = [];
+groupMembers.map( i => mem.push(i.id) )
+sock.sendMessage(from, { text: q ? q : '', mentions: mem }, {quoted: m})
+break
+case 'tagall':
+if (!isGroup) return reply('Khusus Grup')
+if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
+var mems = []
+var teks = `══✪〘 *👥 Tag All* 〙✪══\n➲ Pesan : ${q}\n\n`
+for (let i of groupMembers) {
+teks += `✓ @${i.id.split("@")[0]}\n`
+mems.push(i.id)
 }
+sock.sendMessage(from, { text: teks, mentions: mems}, { quoted: m })
+break
 case 'aesthetic':
 if (q.includes('--help')) return reply(examkosong) 
      reply(`*Loading....⌛*`)
@@ -2652,13 +2666,6 @@ const res = await Searchnabi(q)
 const result = `*Nama* : ${res.name}\n*Wafat* : ${res.wafat_usia}\n*Kelahiran* : ${res.kelahiran}\n*Singgah* : ${res.singgah}\n*Kisah* : ${res.kisah}`
 sock.sendMessage(from, {image : { url : 'https://i.ibb.co/Kw282gw/b54b1faadf3b.jpg' }, caption : result}) 
 break	
-case 'hidetag':
-if (q.includes('--help')) return reply(examquery) 
-if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
-let mem = [];
-groupMembers.map( i => mem.push(i.id) )
-sock.sendMessage(from, { text: q ? q : '', mentions: mem })
-break
 case 'pinterest': {
 if (q.includes('--help')) return reply(examquery) 
 reply('Tunggu Sebentar')
@@ -2710,7 +2717,7 @@ if (q.includes('--help')) return reply(examtag)
   break
   case 'add':{
    if (!isGroup) return reply('Khusus Grup')
-   if (!isGroupAdmins) return reply('Khusus Admin')
+   if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
    if (!isBotGroupAdmins) return reply('Bot Bukan Admin')
    if (args[1]){
     let number = m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
@@ -2725,7 +2732,7 @@ if (q.includes('--help')) return reply(examtag)
   case 'kick':{
 if (q.includes('--help')) return reply(examtag) 
    if (!isGroup) return reply('Khusus Grup')
-   if (!isGroupAdmins) return reply('Khusus Admin')
+   if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
    if (!isBotGroupAdmins) return reply('Bot Bukan Admin')
    console.log(mentionUser)
    sock.groupParticipantsUpdate(from, mentionUser, "remove")
