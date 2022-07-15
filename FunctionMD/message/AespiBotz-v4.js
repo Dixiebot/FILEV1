@@ -232,6 +232,7 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}broadcast (Owner)
 ➭ ${prefix}hidetag <teks>
 ➭ ${prefix}tagall <teks>
+➭ ${prefix}listadmin
 
 ✘ *D O W N L O A D - M E N U*
 
@@ -2228,7 +2229,7 @@ case 'downloadmenu':{
 }
 break
 case 'groupmenu':{
-  	m.reply(from, '✘ *G R O U P - M E N U*\n\n➭ #add\n➭ #kick\n➭ #promote\n➭ #demote\n➭ #setnamegroup\n➭ #grup\n➭ #setdesc\n➭ #revoke\n➭ #afk\n➭ #broadcast', { quoted : m } )
+  	m.reply(from, '✘ *G R O U P - M E N U*\n\n➭ #add\n➭ #kick\n➭ #promote\n➭ #demote\n➭ #setnamegroup\n➭ #grup\n➭ #setdesc\n➭ #revoke\n➭ #afk\n➭ #broadcast\n➭ #tagall\n➭ #hidetag\n➭ #listadmin', { quoted : m } )
 }
 break
 case 'convertmenu':{
@@ -2738,6 +2739,17 @@ if (q.includes('--help')) return reply(examtag)
    sock.groupParticipantsUpdate(from, mentionUser, "remove")
    }
   break
+  case 'listadmin':
+  if (!isGroup) return reply('Khusus Grup')
+      if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
+   var mems = []
+      var teks = `*[ TAG ADMIN ]*\n${q !== undefined ? q : `Pesan Tidak Ada`}\n`
+      for (let i of groupAdmins) {
+        teks += `> @${i.split("@")[0]}\n`
+        mems.push(i)
+      }
+      sock.sendMessage(from, { text: teks, mentions: mems}, { quoted: m })
+      break
   case 'limituser':
 {      
    let txt = `「 *ALL LIMIT USER* 」\n\n`
@@ -3835,7 +3847,7 @@ if (q.includes('--help')) return reply(examlink)
   case 'afk':{
 if (q.includes('--help')) return reply(examquery) 
   let date = + new Date
-  const alasan = q ? q : 'Potong Tytyd'
+  const alasan = q ? q : 'Menggapai mimpi alias turu'
   afk.addAfkUser(m.sender, date, alasan, time, _afk)
   reply(`*@${m.sender.split("@")[0]}* sekarang sedang afk\n*Dengan alasan* : ${alasan}`)
   }
