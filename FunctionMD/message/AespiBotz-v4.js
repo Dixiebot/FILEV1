@@ -73,6 +73,7 @@ igstalk,
    zodiak,
    shio
   } = require('../scrape/primbon') 
+  const salam = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
 const getLocationData = require('../scrape/location')
  const { igDownloader } = require('../scrape/igdown.js') 
  const  Searchnabi  = require('../scrape/kisahnabi.js');
@@ -210,13 +211,17 @@ function randomNomor(min, max = null) {
 const MenuList2 = `*Hallo Terimakasih Sudah Memakai Bot Ini*\n*_Silahkan Klick Tombol Di Bawah ya_*`
 const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║╠─║─║─║║║║║╠─*\n*╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝*
 
+
+*Halo ${m.pushName}*, *Selamat* *${salam}*👋
+
+
 ✘ *I N F O - B O T*
 ➭ *Owner Name* : 𝐅𝐢𝐤𝐫𝐲𝐅𝐀
 ➭ *Bot Name : ${Options.info.botName}*
 ➭ *Library : Baileys-Md*
 ➭ *Version :* *2.1.3*
 ➭ *Nomor Owner* : wa.me/62895364443072
-                                  : wa.me/6282245799282
+                                 : wa.me/6282245799282
    
 ✘ *G R O U P - M E N U*
 
@@ -276,6 +281,8 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}ceklesbi
 ➭ ${prefix}kapankah
 ➭ ${prefix}cekmati
+➭ ${prefix}darkjokes
+➭ ${prefix}quotes
 
 ✘ *T E X T P R O - M E N U*
 
@@ -1625,15 +1632,15 @@ reply(result4)
 sock.sendMessage(from, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }) 
 break
 case 'hidetag':
-if (!isGroup) return reply('Khusus Grup')
-if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
+if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+if (!isGroupAdmins && !isOwner) return reply('*Khusus Admin*!')
 let mem = [];
 groupMembers.map( i => mem.push(i.id) )
 sock.sendMessage(from, { text: q ? q : '', mentions: mem }, {quoted: m})
 break
 case 'tagall':
-if (!isGroup) return reply('Khusus Grup')
-if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
+if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+if (!isGroupAdmins && !isOwner) return reply('*Khusus Admin*!')
 var mems = []
 var teks = `══✪〘 *👥 Tag All* 〙✪══\n➲ Pesan : ${q}\n\n`
 for (let i of groupMembers) {
@@ -1885,17 +1892,34 @@ break
         
 case 'setdesc': case 'setdescription':
 if (q.includes('--help')) return reply(examquery) 
-if (!isGroup) return reply('Khusus Grup')
-if (!isGroupAdmins) return reply('Khusus Admin')
-if (!isBotGroupAdmins) return reply('Bot Bukan Admins')
+if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+if (!isGroupAdmins) return reply('*Khusus Admin*!')
+if (!isBotGroupAdmins) return reply('*Bot bukan Admin*s')
 if (!q) return reply(`Kirim perintah ${prefix + order} teks`)
 await sock.groupUpdateDescription(from, q)
 break
+case 'darkjokes':
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Loading....⌛*`)
+const Fikrii = fs.readFileSync("./FunctionMD/scrape/Result/RandomImage/darkjokes.json");
+const Fikri = JSON.parse(Fikrii)
+const Fikriii = Math.floor(Math.random() * Fikri.length)
+const Fikriiii = Fikri[Fikriii]
+sock.sendMessage(from, { image : { url : Fikriiii }, caption : 'nih' }, { quoted : m}) 
+break
+case 'quotes':
+var kotes2 = JSON.parse(fs.readFileSync("./FunctionMD/scrape/quotes.json"))
+var hasil = pickRandom(kotes2)
+var quot = [
+			{ quickReplyButton: { displayText: `Next Quotes`, id: `${prefix}quotes` } },
+		]
+sock.sendMessage(from, {text: hasil.quotes, templateButtons: quot, footer: `Tetap semangat Kak`, mentions: [m.sender]} )
+break
 case 'grup':
 if (q.includes('--help')) return reply(`Example : ${prefix + order} on/off`) 
-if (!isGroup) return reply('Khusus Grup')
-if (!isGroupAdmins) return reply('Khusus Admin')
-if (!isBotGroupAdmins) return reply('Bot Bukan Admins')
+if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+if (!isGroupAdmins) return reply('*Khusus Admin*!')
+if (!isBotGroupAdmins) return reply('*Bot bukan Admin*s')
 if (!q) return reply(`Kirim perintah ${prefix + order} _options_\nOptions : off & on\nContoh : ${prefix + order} off`)
 if (q == "off") {
   sock.groupSettingUpdate(from, 'announcement')
@@ -1909,16 +1933,16 @@ if (q == "off") {
 break
 case 'revoke':
 if (q.includes('--help')) return reply(examkosong) 
-if (!isGroup) return reply('Khusus Grup')
-if (!isGroupAdmins) return reply('Khusus Admin')
-if (!isBotGroupAdmins) return reply('Bot Bukan Admins')
+if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+if (!isGroupAdmins) return reply('*Khusus Admin*!')
+if (!isBotGroupAdmins) return reply('*Bot bukan Admin*s')
 await sock.groupRevokeInvite(from)
 break
 case 'setnamegroup':
 if (q.includes('--help')) return reply(examkosong) 
-if (!isGroup) return reply('Khusus Grup')
-if (!isGroupAdmins) return reply('Khusus Admin')
-if (!isBotGroupAdmins) return reply('Bot Bukan Admins')
+if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+if (!isGroupAdmins) return reply('*Khusus Admin*!')
+if (!isBotGroupAdmins) return reply('*Bot bukan Admin*s')
 if (!q) reply('Diganti jadi apa') 
 await sock.groupUpdateSubject(from, q)
 break
@@ -2237,7 +2261,7 @@ case 'convertmenu':{
 }
 break
 case 'funmenu':{
-  	m.reply(from, '✘ *F U N - M E N U*\n\n➭ #apakah\n➭ #bisakah\n➭ #bagaimanakah\n➭ #rate\n➭ #cekganteng\n➭ #cekcantik\n➭ #ceksange\n➭ #cekgay\n➭ #ceklesbi\n➭ #kapankah\n➭ #wangy\n➭ #cekmati', { quoted : m } )
+  	m.reply(from, '✘ *F U N - M E N U*\n\n➭ #apakah\n➭ #bisakah\n➭ #bagaimanakah\n➭ #rate\n➭ #cekganteng\n➭ #cekcantik\n➭ #ceksange\n➭ #cekgay\n➭ #ceklesbi\n➭ #kapankah\n➭ #wangy\n➭ #cekmati\n➭ #darkjokes\n➭ #quotes', { quoted : m } )
 }
 break
 case 'rpgmenu':{
@@ -2677,9 +2701,9 @@ sock.sendMessage(from, { image: { url: result }, caption: '▹ Media Url : '+res
             break
   case 'antilink':
 if (q.includes('--help')) return reply(`*Example* : ${prefix+order}off/on`) 
-if (!isGroup) return reply('Khusus Grup')
-if (!isGroupAdmins) return reply('Khusus Admin') 
-if (!isBotGroupAdmins) return reply('Bot bukan admin') 
+if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+if (!isGroupAdmins) return reply('*Khusus Admin*!') 
+if (!isBotGroupAdmins) return reply('*Bot bukan Admin*') 
 if (q === 'on') {
 if (isAntiLink) return reply('Sudah Aktif Kak')
 antilink.push(m.sender)
@@ -2698,9 +2722,9 @@ reply('Sukses menonaktifkan fitur antilink')
 break 	
   case 'promote':{
 if (q.includes('--help')) return reply(examtag) 
-   if (!isGroup) return reply('Khusus Grup')
-   if (!isGroupAdmins) return reply('Khusus Admin')
-   if (!isBotGroupAdmins) return reply('Bot Bukan Admin')
+   if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+   if (!isGroupAdmins) return reply('*Khusus Admin*!')
+   if (!isBotGroupAdmins) return reply('*Bot bukan Admin*')
    reply('Berhasil!! Dan Sekarang Dia Sudah Menjadi Admin Di Group Ini')
    console.log(mentionUser)
    sock.groupParticipantsUpdate(from, mentionUser, "promote")
@@ -2708,18 +2732,18 @@ if (q.includes('--help')) return reply(examtag)
   break
   case 'demote':{
 if (q.includes('--help')) return reply(examtag) 
-   if (!isGroup) return reply('Khusus Grup')
-   if (!isGroupAdmins) return reply('Khusus Admin')
-   if (!isBotGroupAdmins) return reply('Bot Bukan Admin')
+   if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+   if (!isGroupAdmins) return reply('*Khusus Admin*!')
+   if (!isBotGroupAdmins) return reply('*Bot bukan Admin*')
    reply('Berhasil!! Dia Sekarang Bukan Admin Di Group Ini')
    console.log(mentionUser)
    sock.groupParticipantsUpdate(from, mentionUser, "demote")
    }
   break
   case 'add':{
-   if (!isGroup) return reply('Khusus Grup')
-   if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
-   if (!isBotGroupAdmins) return reply('Bot Bukan Admin')
+   if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+   if (!isGroupAdmins && !isOwner) return reply('*Khusus Admin*!')
+   if (!isBotGroupAdmins) return reply('*Bot bukan Admin*')
    if (args[1]){
     let number = m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
     sock.groupParticipantsUpdate(from, [number], "add")
@@ -2732,16 +2756,16 @@ if (q.includes('--help')) return reply(examtag)
   break
   case 'kick':{
 if (q.includes('--help')) return reply(examtag) 
-   if (!isGroup) return reply('Khusus Grup')
-   if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
-   if (!isBotGroupAdmins) return reply('Bot Bukan Admin')
+   if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+   if (!isGroupAdmins && !isOwner) return reply('*Khusus Admin*!')
+   if (!isBotGroupAdmins) return reply('*Bot bukan Admin*')
    console.log(mentionUser)
    sock.groupParticipantsUpdate(from, mentionUser, "remove")
    }
   break
   case 'listadmin':
-  if (!isGroup) return reply('Khusus Grup')
-      if (!isGroupAdmins && !isOwner) return reply('Khusus Admin')
+  if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+      if (!isGroupAdmins && !isOwner) return reply('*Khusus Admin*!')
    var mems = []
       var teks = `*[ TAG ADMIN ]*\n${q !== undefined ? q : `Pesan Tidak Ada`}\n`
       for (let i of groupAdmins) {
@@ -3819,29 +3843,29 @@ if (q.includes('--help')) return reply(examquery)
 
   case 'tiktokmp3':{
 if (q.includes('--help')) return reply(examlink) 
-  if (!q) return reply('Linknya?')
+  if (!q) return reply('Contoh : #tiktokmp3 Link Video Tiktok *Untuk Menjadikan Video Tersebut Menjadi Musik*')
   if (!q.includes('tiktok')) return reply('Itu bukan link tiktok!')
   reply(`*Loading....⌛*`)
    const musim_rambutan = await TiktokDownloader(`${q}`).catch(e => {
  reply(pesan.eror) 
 } )
    console.log(musim_rambutan)
-   const musim_duren_a = musim_rambutan.result.nowatermark
+   const musim_duren_a = musim_rambutan.media[2].url
     sock.sendMessage(from, { audio: { url: musim_duren_a }, mimetype: 'audio/mp4' }, { quoted: m })
    }
  break
 
   case 'tiktoknowm':{
 if (q.includes('--help')) return reply(examlink) 
-  if (!q) return reply('Linknya?')
+  if (!q) return reply('Contoh : #tiktoknowm Link Video Tiktok')
   if (!q.includes('tiktok')) return reply('Itu bukan link tiktok!')
   reply(`*Loading....⌛*`)
    const musim_rambutan = await TiktokDownloader(`${q}`).catch(e => {
  reply(pesan.eror) 
 } )
    console.log(musim_rambutan)
-   const musim_duren_v = musim_rambutan.result.nowatermark
-    sock.sendMessage(from, { video: { url: musim_duren_v }, caption: "Nih Hasil Ngab\nNanti Donasi Ya, https://saweria.co/DixieBot😊" }, { quoted: m })
+   const musim_duren_v = musim_rambutan.media[1].url
+    sock.sendMessage(from, { video: { url: musim_duren_v }, caption: `Nih Hasil Ngab\nNanti Donasi Ya, ${Options.info.duituntukowner}😊` }, { quoted: m })
    }
   break
   case 'afk':{
