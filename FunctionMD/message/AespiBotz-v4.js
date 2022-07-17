@@ -2270,7 +2270,7 @@ case 'convertmenu':{
 }
 break
 case 'funmenu':{
-  	m.reply(from, '✘ *F U N - M E N U*\n\n➭ #apakah\n➭ #bisakah\n➭ #bagaimanakah\n➭ #rate\n➭ #cekganteng\n➭ #cekcantik\n➭ #ceksange\n➭ #cekgay\n➭ #ceklesbi\n➭ #kapankah\n➭ #wangy\n➭ #cekmati\n➭ #darkjokes\n➭ #quotes', { quoted : m } )
+  	m.reply(from, '✘ *F U N - M E N U*\n\n➭ #apakah\n➭ #bisakah\n➭ #bagaimanakah\n➭ #rate\n➭ #cekganteng\n➭ #cekcantik\n➭ #ceksange\n➭ #cekgay\n➭ #ceklesbi\n➭ #kapankah\n➭ #cekmati\n➭ #darkjokes\n➭ #quotes', { quoted : m } )
 }
 break
 case 'rpgmenu':{
