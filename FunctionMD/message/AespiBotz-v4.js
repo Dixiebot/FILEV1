@@ -283,6 +283,7 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}cekmati
 ➭ ${prefix}darkjokes
 ➭ ${prefix}quotes
+➭ ${prefix}gombalan
 
 ✘ *T E X T P R O - M E N U*
 
@@ -362,7 +363,7 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}artinama
 ➭ ${prefix}storywa
 ➭ ${prefix}asupan
-➭ ${prefix}moodbooster
+➭ ${prefix}kepoininstagram <error>
 
 ✘ *S O U N D - M E N U*
 
@@ -655,7 +656,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _math[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 } 
 if (_tbkkimia.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -669,7 +670,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tbkkimia[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/tebakkimia.json", JSON.stringify(_tbkkimia))
 } else {
-reply("*Jawab Yang Bener Kak!*")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_asahotak.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -683,7 +684,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _asahotak[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/asahotak.json", JSON.stringify(_asahotak))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_susunkata.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -697,7 +698,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _susunkata[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/susunkata.json", JSON.stringify(_susunkata))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_tebakkalimat.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -711,7 +712,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tebakkalimat[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/tebakkalimat.json", JSON.stringify(_tebakkalimat))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_tekateki.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -725,7 +726,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tekateki[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/tekateki.json", JSON.stringify(_tekateki))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_caklontong.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -739,7 +740,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _caklontong[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/caklontong.json", JSON.stringify(_caklontong))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_tebakbendera.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -759,7 +760,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tebakbendera[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/tebakbendera.json", JSON.stringify(_tebakbendera))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_tebakanime.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -774,7 +775,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tebakanime[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/tebakanime.json", JSON.stringify(_tebakanime))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_tebakkabupaten.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -788,7 +789,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tebakkabupaten[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/tebakkabupaten.json", JSON.stringify(_tebakkabupaten))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_tebaklirik.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -802,7 +803,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tebaklirik[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/tebaklirik.json", JSON.stringify(_tebaklirik))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
 if (_tebaklagu.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
@@ -816,7 +817,7 @@ const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
 delete _tebaklagu[m.sender.split('@')[0]]
 fs.writeFileSync("./storage/user/tebaklagu.json", JSON.stringify(_tebaklagu))
 } else {
-reply("*Jawab Yang Bener Kak!*!")
+reply("Jawaban Salah Kak!")
 }
 }
   //Auto reset
@@ -1658,15 +1659,6 @@ const Arielll = Math.floor(Math.random() * Ariel.length)
 const Ariellll = Ariel[Arielll]
 sock.sendMessage(from, { image : { url : Ariellll }, caption : 'nih' }, { quoted : m}) 
 break
-case 'moodbooster':
-if (q.includes('--help')) return reply(examkosong) 
-     reply(`*Loading....⌛*`)
-const Fikri1 = fs.readFileSync("./FunctionMD/scrape/Result/RandomVideo/moodbooster.json");
-const Fikri2 = JSON.parse(Fikri1)
-const Fikri3 = Math.floor(Math.random() * Fikri2.length)
-const Fikri4 = Fikri2[Fikri3]
-sock.sendMessage(from, { video : { url : Fikri4.url }, caption : 'nih' }) 
-break
 case 'storywa':
 if (q.includes('--help')) return reply(examkosong) 
      reply(`*Loading....⌛*`)
@@ -1940,6 +1932,14 @@ if (q == "off") {
   reply(`Kirim perintah ${prefix + order} _options_\nOptions : off & on\nContoh : ${prefix + order} off`)
 }
 break
+case 'gombalan':
+    var gombal = JSON.parse(fs.readFileSync("./FunctionMD/scrape/gombalan.json"))
+var hasil = pickRandom(gombal)
+var gom = [
+			{ quickReplyButton: { displayText: `Next `, id: `${prefix}gombalan` } },
+		]
+		sock.sendMessage(from, {text: hasil, templateButtons: gom, footer: `Jangan baper lu dek`, mentions: [m.sender]} )
+break
 case 'revoke':
 if (q.includes('--help')) return reply(examkosong) 
 if (!isGroup) return reply('*Perintah ini khusus Grup*!')
@@ -1954,6 +1954,20 @@ if (!isGroupAdmins) return reply('*Khusus Admin*!')
 if (!isBotGroupAdmins) return reply('*Bot bukan Admin*s')
 if (!q) reply('Diganti jadi apa') 
 await sock.groupUpdateSubject(from, q)
+break
+case 'linkgrup': case 'linkgc':
+if (!isGroupAdmins && !isOwner) return reply('*Khusus Admin*!')
+if (!isGroup) return reply('*Perintah ini khusus Grup*!')
+if (!isBotGroupAdmins) return reply('*Bot bukan Admin*')
+var url = await sock.groupInviteCode(from).catch(() => reply(mess.error.api))
+url = 'https://chat.whatsapp.com/'+url
+reply(url)
+break
+case 'tahta': case 'hartatahta':
+  if (args.length < 2) return reply(`Kirim perintah ${prefix} <Text1>`)
+  reply("Tunggu Sebentar Sedang Membuat Makernya Sekitar 1 Menit Kurang")
+  reply(`Harta Tahta *${q}* Sedang Di Buat`)
+sock.sendMessage(from, {caption: `*HARTA*\n*TAHTA*\n*${q}*`, image: { url: `https://hardianto.xyz/api/maker/harta-tahta?apikey=${keyanto}&text=${q}`}}, {quoted: msg})
 break
 case 'wiki':
 if (q.includes('--help')) return reply(examquery) 
@@ -2270,7 +2284,7 @@ case 'convertmenu':{
 }
 break
 case 'funmenu':{
-  	m.reply(from, '✘ *F U N - M E N U*\n\n➭ #apakah\n➭ #bisakah\n➭ #bagaimanakah\n➭ #rate\n➭ #cekganteng\n➭ #cekcantik\n➭ #ceksange\n➭ #cekgay\n➭ #ceklesbi\n➭ #kapankah\n➭ #cekmati\n➭ #darkjokes\n➭ #quotes', { quoted : m } )
+  	m.reply(from, '✘ *F U N - M E N U*\n\n➭ #apakah\n➭ #bisakah\n➭ #bagaimanakah\n➭ #rate\n➭ #cekganteng\n➭ #cekcantik\n➭ #ceksange\n➭ #cekgay\n➭ #ceklesbi\n➭ #kapankah\n➭ #wangy\n➭ #cekmati\n➭ #darkjokes\n➭ #quotes\n➭ #gombalan', { quoted : m } )
 }
 break
 case 'rpgmenu':{
@@ -2298,7 +2312,7 @@ case 'googlemenu':{
 }
 break
 case 'randommenu':{
-	m.reply(from, '✘ *R A N D O M - M E N U*\n\n➭ #waifu\n➭ #simi\n➭ #awoo\n➭ #shinobu\n➭ #neko\n➭ #megumin\n➭ #couple\n➭ #aesthetic\n➭ #artinama\n➭ #storywa\n➭ #moodbooster\n➭ #asupan\n➭ #kepoininstagram', { quoted : m } )
+	m.reply(from, '✘ *R A N D O M - M E N U*\n\n➭ #waifu\n➭ #simi\n➭ #awoo\n➭ #shinobu\n➭ #neko\n➭ #megumin\n➭ #couple\n➭ #aesthetic\n➭ #artinama\n➭ #storywa\n➭ #asupan\n➭ #kepoininstagram', { quoted : m } )
 }
 break
 case 'soundmenu':{
