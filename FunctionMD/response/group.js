@@ -7,7 +7,7 @@
        let participants = update.participants
        for (let num of participants) {
          try {
-           ppuser = await sock.profilePictureUrl(num, 'ngentot')
+           ppuser = await sock.profilePictureUrl(num, 'image')
          } catch {
            ppuser = 'https://telegra.ph/file/4f3367f6e074bf5ea5410.jpg'
          }
@@ -24,11 +24,9 @@
          update.id, 
          { 
          caption: `*Halo @${num.split("@")[0]} Member Baru Di ${metadata.subject}* *Patuhi Rules Di Group Ini*`, 
-         location: { 
-          jpegThumbnail: await getBuffer(ppuser) 
-         }, 
+         image: { url: './storage/image/welcome.jpg' },
          buttons: button, 
-         footer: 'Kamu animek ya banh?', mentions: [num] })
+         footer: 'kamu animek ya banh?', mentions: [num] })
          } 
         else 
         if (update.action == 'remove') {
@@ -44,11 +42,9 @@
            update.id, 
           { 
            caption: `*@${num.split("@")[0]} Keluar Dari Group ${metadata.subject}*\nMungkin Dia Sedang Menculik Waifu Makanya Keluar Group`, 
-           location: {
-            jpegThumbnail: await getBuffer(ppuser)
-          }, 
+           image: { url: './storage/image/leave.jpg' },
            buttons: button, 
-           footer: 'FikryFA', 
+           footer: 'Beban berkurang 1', 
            mentions: [num] 
              }
              )
