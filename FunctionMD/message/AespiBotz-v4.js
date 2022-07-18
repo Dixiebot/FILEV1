@@ -239,6 +239,7 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}hidetag <teks>
 ➭ ${prefix}tagall <teks>
 ➭ ${prefix}listadmin
+➭ ${prefix}linkgc
 
 ✘ *D O W N L O A D - M E N U*
 
@@ -364,7 +365,7 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}artinama
 ➭ ${prefix}storywa
 ➭ ${prefix}asupan
-➭ ${prefix}kepoininstagram <error>
+➭ ${prefix}moodbooster
 
 ✘ *S O U N D - M E N U*
 
@@ -379,6 +380,16 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}sound9
 ➭ ${prefix}sound10
 ➭ ${prefix}sound11
+➭ ${prefix}sound12
+➭ ${prefix}sound13
+➭ ${prefix}sound14
+➭ ${prefix}sound15
+➭ ${prefix}sound16
+➭ ${prefix}sound17
+➭ ${prefix}sound19
+➭ ${prefix}sound19
+➭ ${prefix}sound20
+➭ ${prefix}sound21
 
 ✘ *KISAH - M E N U*
 
@@ -1950,7 +1961,7 @@ var gom = [
 		]
 		sock.sendMessage(from, {text: hasil, templateButtons: gom, footer: `Jangan baper lu dek`, mentions: [m.sender]} )
 break
-case 'revoke':
+case 'revoke': case 'resetlink':
 if (q.includes('--help')) return reply(examkosong) 
 if (!isGroup) return reply('*Perintah ini khusus Grup*!')
 if (!isGroupAdmins) return reply('*Khusus Admin*!')
@@ -2286,7 +2297,7 @@ case 'downloadmenu':{
 }
 break
 case 'groupmenu':{
-  	m.reply(from, '✘ *G R O U P - M E N U*\n\n➭ #add\n➭ #kick\n➭ #promote\n➭ #demote\n➭ #setnamegroup\n➭ #grup\n➭ #setdesc\n➭ #revoke\n➭ #afk\n➭ #broadcast\n➭ #tagall\n➭ #hidetag\n➭ #listadmin', { quoted : m } )
+  	m.reply(from, '✘ *G R O U P - M E N U*\n\n➭ #add\n➭ #kick\n➭ #promote\n➭ #demote\n➭ #setnamegroup\n➭ #grup\n➭ #setdesc\n➭ #resetlink\n➭ #afk\n➭ #broadcast\n➭ #tagall\n➭ #hidetag\n➭ #listadmin\n➭ #linkgc', { quoted : m } )
 }
 break
 case 'convertmenu':{
@@ -2322,7 +2333,7 @@ case 'googlemenu':{
 }
 break
 case 'randommenu':{
-	m.reply(from, '✘ *R A N D O M - M E N U*\n\n➭ #waifu\n➭ #simi\n➭ #awoo\n➭ #shinobu\n➭ #neko\n➭ #megumin\n➭ #couple\n➭ #aesthetic\n➭ #artinama\n➭ #storywa\n➭ #asupan\n➭ #kepoininstagram', { quoted : m } )
+	m.reply(from, '✘ *R A N D O M - M E N U*\n\n➭ #waifu\n➭ #simi\n➭ #awoo\n➭ #shinobu\n➭ #neko\n➭ #megumin\n➭ #couple\n➭ #aesthetic\n➭ #artinama\n➭ #storywa\n➭ #asupan\n➭ #moodbooster', { quoted : m } )
 }
 break
 case 'soundmenu':{
@@ -3781,6 +3792,76 @@ case 'sound11':{
 if (q.includes('--help')) return reply(examkosong) 
 reply(`*Loading....⌛*`)
    sock.sendMessage(from, { audio: {url : `https://j.top4top.io/m_23534642l0.mp4`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+  case 'sound12':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://h.top4top.io/m_235991jjn0.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound13':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://j.top4top.io/m_23594d72t1.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound14':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://k.top4top.io/m_23595i6io2.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound15':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://a.top4top.io/m_2359x5g8j4.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound16':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://l.top4top.io/m_2359l01x13.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound17':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://b.top4top.io/m_2359ola665.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound18':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://c.top4top.io/m_2359n6agj6.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound19':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://d.top4top.io/m_2359fok3u7.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound20':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://e.top4top.io/m_2359q1yyh8.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
+   )
+  }
+  break
+case 'sound21':{
+if (q.includes('--help')) return reply(examkosong) 
+reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
+   sock.sendMessage(from, { audio: {url : `https://f.top4top.io/m_2359l8lje9.mp3`}, mimetype: 'audio/mp4', ptt: true}, {quoted: m}
    )
   }
   break
