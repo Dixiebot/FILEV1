@@ -3807,7 +3807,7 @@ if (q.includes('--help')) return reply(examkosong)
   case 'hapus': case 'delete': case 'del': case 'd':{
 if (q.includes('--help')) return reply(examply) 
       if (!m.quoted) return  m.reply(from, 'Reply pesanya!', { quoted : m })
-       if (!m.quoted.isBaileys) return  m.reply(from, 'Fitur ini hanya berlaku menghapus pesan bot yang di kirim oleh saya!', { quoted : m })
+       if (!m.quoted.isBaileys) return  m.reply(from, 'Fitur ini hanya berlaku menghapus pesan bot', { quoted : m })
           sock.sendMessage(from, { delete: { remoteJid: from, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
          }
       break
