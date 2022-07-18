@@ -73,7 +73,6 @@ igstalk,
    zodiak,
    shio
   } = require('../scrape/primbon') 
-  const command = chats.toLowerCase().split(' ')[0] || ''
   const salam = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
 const getLocationData = require('../scrape/location')
  const { igDownloader } = require('../scrape/igdown.js') 
@@ -3225,7 +3224,7 @@ if (q.includes('--help')) return reply(examkosong)
        {
      index: 2, 
       quickReplyButton: {
-       displayText: '🌀 ??𝐏𝐄𝐄𝐃', 
+       displayText: '🌀 𝐒𝐏𝐄𝐄𝐃', 
        id: '#speed'
       } 
     },
