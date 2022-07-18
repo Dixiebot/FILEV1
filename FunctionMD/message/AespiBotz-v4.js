@@ -1659,6 +1659,15 @@ const Arielll = Math.floor(Math.random() * Ariel.length)
 const Ariellll = Ariel[Arielll]
 sock.sendMessage(from, { image : { url : Ariellll }, caption : 'nih' }, { quoted : m}) 
 break
+case 'moodbooster':
+if (q.includes('--help')) return reply(examkosong) 
+     reply(`*Loading....⌛*`)
+const Kryy1 = fs.readFileSync("./FunctionMD/scrape/Result/RandomVideo/moodbooster.json");
+const Kryy2 = JSON.parse(Kryy1)
+const Kryy3 = Math.floor(Math.random() * Kryy2.length)
+const Kryy4 = Kryy2[Kryy3]
+sock.sendMessage(from, { video : { url : Kryy4.url }, caption : 'nih' }) 
+break
 case 'storywa':
 if (q.includes('--help')) return reply(examkosong) 
      reply(`*Loading....⌛*`)
