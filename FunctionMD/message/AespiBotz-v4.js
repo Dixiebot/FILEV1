@@ -261,6 +261,16 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ ${prefix}sticker
 ➭ ${prefix}patrik
 
+✘ *I M A G E - M E N U*
+
+➭ ${prefix}meme
+➭ ${prefix}cosplayer
+➭ ${prefix}randomwallpaper
+➭ ${prefix}wallpaperanime
+➭ ${prefix}husbu
+➭ ${prefix}naruto
+➭ ${prefix}sasuke
+
 ✘ *R P G - M E N U*
 
 ➭ ${prefix}limituser
@@ -1929,6 +1939,27 @@ const Fikriii = Math.floor(Math.random() * Fikri.length)
 const Fikriiii = Fikri[Fikriii]
 sock.sendMessage(from, { image : { url : Fikriiii }, caption : 'nih' }, { quoted : m}) 
 break
+case 'meme':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/memeindo?apikey=dc311285aa` }, caption : 'Done!' }, { quoted : m})
+break
+case 'cosplayer':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/cosplay?apikey=dc311285aa` }, caption : 'Janji gak berdiri?' }, { quoted : m})
+break
+case 'randomwallpaper':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/wallhp?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
+break
+case 'wallpaperanime':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomanime/v2/wallhp?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
+break
+case 'husbu':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomanime/husbu?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
+break
+case 'naruto':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomanime/v2/naruto?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
+break
+case 'sasuke':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomanime/v2/sasuke?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
+break
 case 'quotes':
 var kotes2 = JSON.parse(fs.readFileSync("./FunctionMD/scrape/quotes.json"))
 var hasil = pickRandom(kotes2)
@@ -2000,32 +2031,9 @@ const result2 = `*Judul :* ${res2[0].judul}\n*Wiki :* ${res2[0].wiki}`
 sock.sendMessage(from, { image : { url : res2[0].thumb }, caption : result2}) 
 break
 case 'asupan':
-if (q.includes('--help')) return reply(examquery) 
-if (q.toLowerCase() === "geayubi") {
-     reply(`*Loading....⌛*`)
-const oi = geayubi
-const jsonData = JSON.parse(oi);
-const xm1 = Math.floor(Math.random() * jsonData.length);
-const xm2 = jsonData[xm1];
-console.log(xm2.url) 
-sock.sendMessage(from, {video : { url : xm2.url }, caption : 'nih'}) 
-} else if  (q.toLowerCase() === "penyegar") {
-const ooi = penyegar
-const jsonData = JSON.parse(ooi);
-const x1 = Math.floor(Math.random() * jsonData.length);
-const x2 = jsonData[x1];
-console.log(x2.url) 
-sock.sendMessage(from, {video : { url : x2.url }, caption : 'nih'}) 
-} else if (q.toLowerCase() === "rikagusriani") {
-const oi = geayubi
-const jsonData = JSON.parse(oi);
-const xm1 = Math.floor(Math.random() * jsonData.length);
-const xm2 = jsonData[xm1];
-console.log(xm2.url) 
-sock.sendMessage(from, {video : { url : xm2.url }, caption : 'nih'}) 
-} else {
-reply(`𝗔𝘀𝘂𝗽𝗮𝗻 𝗮𝗽𝗮\n${prefix + order} penyegar\n${prefix + order} geayubi\n${prefix + order} rikagusriani`) 
-}
+reply(`*Loading....⌛*`)
+buffer = `https://zenzapis.xyz/randomasupan/asupantiktok?apikey=dc311285aa`
+sock.sendMessage(from, {video:{url:buffer}, caption:"Nih Ngab, awas kebablasan"}, {quoted:m})
 break
 case 'tourl': {
 let { UploadFileUgu, webp2mp4File, TelegraPh } = require('../scrape/uploader')
@@ -2278,7 +2286,7 @@ if (q.includes('--help')) return reply(examquery)
   break
   case 'arielsandypermana':{
  {
-                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "🌀 Semua Menu", rowId: "#menu2", description: "Menampilkan Semua Menu 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "👻 Group Menu", rowId: "#groupmenu", description: "Menampilkan Menu Group"},{title: "📢 Download Menu", rowId: "#downloadmenu", description: "Menampilkan Menu Download"},{title: "🌚 Convert Menu", rowId: "#convertmenu", description: "Menampilkan Menu Convert"},{title: "🫂Fun Menu", rowId: "#funmenu", description: "Menampilkan Fun Menu"},{title: "⚔️ RPG Menu", rowId: "#rpgmenu", description: "Menampilkan Menu RPG ⚔️"},{title: "📖 Textpro Menu", rowId: "#textpromenu", description: "Menampilkan Menu Textpro"},{title: "🗣️ Info Menu", rowId: "#infomenu", description: "Menampilkan Menu Informasi"},{title: "🍳 Google Menu", rowId: "#googlemenu", description: "Menampilkan Menu Google"},{title: "🤖 Random Menu", rowId: "#randommenu", description: "Menampilkan Menu Random"},{title: "🎧 Sound Menu", rowId: "#soundmenu", description: "Menampilkan Menu Musik"},{title: "📖 Kisah Menu", rowId: "#kisahmenu", description: "Menampilkan Menu Kisah Nabi"},{title: "👀 Wibu Menu", rowId: "#animemenu", description: "Menampilkan Menu Wibu"},{title: "⌨️ Tools Menu", rowId: "#toolsmenu", description: "Menampilkan Menu Tools"},{title: "🦃 MTK Menu", rowId: "#mtkmenu", description: "Menampilkan Menu MTK"},{title: "🎮 Game Menu", rowId: "#gamemenu", description: "Menampilkan Menu Game"},{title: "☢️ Virtex Menu", rowId: "#virtexmenu", description: "Anda Ingin War? Yuk Cobain Virtex 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "☠️ WA Imun Menu", rowId: "#wamenu", description: "WhatsApp Anti Virtex"}, ]}    ]
+                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "🌀 Semua Menu", rowId: "#menu2", description: "Menampilkan Semua Menu 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "👻 Group Menu", rowId: "#groupmenu", description: "Menampilkan Menu Group"},{title: "📢 Download Menu", rowId: "#downloadmenu", description: "Menampilkan Menu Download"},{title: "🌚 Convert Menu", rowId: "#convertmenu", description: "Menampilkan Menu Convert"},{title: "🔥Image Menu", rowId: "#imagemenu", description: "Menampilkan Image Menu"},{title: "🫂Fun Menu", rowId: "#funmenu", description: "Menampilkan Fun Menu"},{title: "⚔️ RPG Menu", rowId: "#rpgmenu", description: "Menampilkan Menu RPG ⚔️"},{title: "📖 Textpro Menu", rowId: "#textpromenu", description: "Menampilkan Menu Textpro"},{title: "🗣️ Info Menu", rowId: "#infomenu", description: "Menampilkan Menu Informasi"},{title: "🍳 Google Menu", rowId: "#googlemenu", description: "Menampilkan Menu Google"},{title: "🤖 Random Menu", rowId: "#randommenu", description: "Menampilkan Menu Random"},{title: "🎧 Sound Menu", rowId: "#soundmenu", description: "Menampilkan Menu Musik"},{title: "📖 Kisah Menu", rowId: "#kisahmenu", description: "Menampilkan Menu Kisah Nabi"},{title: "👀 Wibu Menu", rowId: "#animemenu", description: "Menampilkan Menu Wibu"},{title: "⌨️ Tools Menu", rowId: "#toolsmenu", description: "Menampilkan Menu Tools"},{title: "🦃 MTK Menu", rowId: "#mtkmenu", description: "Menampilkan Menu MTK"},{title: "🎮 Game Menu", rowId: "#gamemenu", description: "Menampilkan Menu Game"},{title: "☢️ Virtex Menu", rowId: "#virtexmenu", description: "Anda Ingin War? Yuk Cobain Virtex 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "☠️ WA Imun Menu", rowId: "#wamenu", description: "WhatsApp Anti Virtex"}, ]}    ]
                 let listMessage = {footer: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀",text: `*╭╮╱╭┳━━━┳╮╱╱╭━━━╮*\n*┃┃╱┃┃╭━╮┃┃╱╱┃╭━╮┃*\n*┃╰━╯┃┃╱┃┃┃╱╱┃┃╱┃┃*\n*┃╭━╮┃╰━╯┃┃╱╭┫┃╱┃┃*\n*┃┃╱┃┃╭━╮┃╰━╯┃╰━╯┃*\n*╰╯╱╰┻╯╱╰┻━━━┻━━━╯*\n\n\n*Halo Semuanya Saya 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭 Siap Membantu Anda Kapanpun, Jika ada pertanyaan silahkan Hubungi Owner ya Kak*☺\n\n_*Note:*Bot masih dalam pengembangan, mohon dimaklumi bila terjadi error*_\n\n*fyi ketik .menu2 untuk langsung ke daftar menu*`,buttonText: "LIST",sections}
                 let sendm =  sock.sendMessage( from, listMessage, {quoted :m })
                 }
@@ -2304,13 +2312,17 @@ case 'convertmenu':{
   	m.reply(from, '✘ *C O N V E R T - M E N U*\n\n➭ #toimg\n➭ #tomp4\n➭ #tomp3\n➭ #togif\n➭ #unduh\n➭ #sticker\n➭ #patrik', { quoted : m } )
 }
 break
+case 'imagemenu':{
+  	m.reply(from, '✘ *I M A G E - M E N U*\n\n➭ #meme\n➭ #cosplayer\n➭ #randomwallpaper\n➭ #wallpaperanime\n➭ #husbu\n➭ #naruto\n➭ #sasuke', { quoted : m } )
+}
+break
 case 'funmenu':{
   	m.reply(from, '✘ *F U N - M E N U*\n\n➭ #apakah\n➭ #bisakah\n➭ #bagaimanakah\n➭ #rate\n➭ #cekganteng\n➭ #cekcantik\n➭ #ceksange\n➭ #cekgay\n➭ #ceklesbi\n➭ #kapankah\n➭ #wangy\n➭ #cekmati\n➭ #darkjokes\n➭ #quotes\n➭ #gombalan', { quoted : m } )
 }
 break
 case 'rpgmenu':{
     {
-                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "[ ♂️ ] Cek Limit", rowId: "#limituser", description: "Cek Limit Semua Orang Yang Menggunakan Aespi Bot"},{title: "[ 🏹 ] Berburu", rowId: "#berburu", description: "Berburu Di Hutan"},{title: "[ 🎣 ] Memancing Ikan", rowId: "#mancing", description: "Memancing Ikan"},{title: "[ ⛏️ ] Menambang", rowId: "#menambang", description: "Menambang Untuk Mendapatkan Emas"},{title: "[ ⚒️ ] Mining", rowId: "#mining", description: "Mining Yuk"},{title: "[ ♥️ ] Mengisi Darah", rowId: "#heal", description: "Mengisi Darah Agar Kamu Tidak Mati"}, ]}    ]
+                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "[ ♂️ ] Cek Limit", rowId: "#limituser", description: "Cek Limit Semua Orang Yang Menggunakan Dixie Bot"},{title: "[ 🏹 ] Berburu", rowId: "#berburu", description: "Berburu Di Hutan"},{title: "[ 🎣 ] Memancing Ikan", rowId: "#mancing", description: "Memancing Ikan"},{title: "[ ⛏️ ] Menambang", rowId: "#menambang", description: "Menambang Untuk Mendapatkan Emas"},{title: "[ ⚒️ ] Mining", rowId: "#mining", description: "Mining Yuk"},{title: "[ ♥️ ] Mengisi Darah", rowId: "#heal", description: "Mengisi Darah Agar Kamu Tidak Mati"}, ]}    ]
                 let listMessage = {footer: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀",text: `Selamat Datang Di Menu Adventure`, buttonText: "Klick Ini Kak",sections}
                 let sendm =  sock.sendMessage( from, listMessage, {quoted :m })
                 }
@@ -3867,7 +3879,7 @@ reply(`*Tunggu Kak... ༼ つ ◕‿◕ ༽つ*`)
   break
 case 'rules':
 if (q.includes('--help')) return reply(examkosong)
-sock.sendMessage(from, { image: { url: './storage/image/rules.jpg' }, caption: `*╭╮╱╭┳━━━┳╮╱╱╭━━━╮*\n*┃┃╱┃┃╭━╮┃┃╱╱┃╭━╮┃*\n*┃╰━╯┃┃╱┃┃┃╱╱┃┃╱┃┃*\n*┃╭━╮┃╰━╯┃┃╱╭┫┃╱┃┃*\n*┃┃╱┃┃╭━╮┃╰━╯┃╰━╯┃*\n*╰╯╱╰┻╯╱╰┻━━━┻━━━╯*\n\n\*𝐇𝐚𝐥𝐨 𝐊𝐚𝐤 ${m.pushName}*👋, *𝐌𝐨𝐡𝐨𝐧 𝐩𝐚𝐭𝐮𝐡𝐢 𝐑𝐮𝐥𝐞𝐬 𝐝𝐢𝐛𝐚𝐰𝐚𝐡 𝐢𝐧𝐢 𝐲𝐚* 😊\n⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻\n➵ 𝐃𝐢𝐥𝐚𝐫𝐚𝐧𝐠 𝐒𝐩𝐚𝐦 𝐛𝐨𝐭\n➵ 𝐃𝐢𝐥𝐚𝐫𝐚𝐧𝐠 𝐌𝐞𝐧𝐞𝐥𝐩𝐨𝐧 𝐧𝐨𝐦𝐨𝐫 𝐁𝐨𝐭\n➵ 𝐃𝐢𝐥𝐚𝐫𝐚𝐧𝐠 𝐌𝐞𝐧𝐞𝐥𝐩𝐨𝐧 𝐧𝐨𝐦𝐨𝐫 𝐎𝐰𝐧𝐞𝐫\n➵ 𝐏𝐚𝐭𝐮𝐡𝐢 𝐚𝐭𝐮𝐫𝐚𝐧 𝐠𝐫𝐮𝐩 𝐲𝐚𝐧𝐠 𝐬𝐮𝐝𝐚𝐡 𝐝𝐢𝐭𝐞𝐭𝐚𝐩𝐤𝐚𝐧 𝐚𝐝𝐦𝐢𝐧\n➵ 𝐉𝐢𝐤𝐚 𝐢𝐧𝐠𝐢𝐧 𝐛𝐞𝐫𝐦𝐚𝐢𝐧 𝐠𝐚𝐦𝐞, 𝐬𝐞𝐛𝐚𝐢𝐤𝐧𝐲𝐚 𝐝𝐢𝐥𝐚𝐤𝐮𝐤𝐚𝐧 𝐝𝐢 𝐜𝐡𝐚𝐭 𝐩𝐫𝐢𝐛𝐚𝐝𝐢 𝐝𝐞𝐧𝐠𝐚𝐧 𝐛𝐨𝐭 𝐚𝐠𝐚𝐫 𝐭𝐢𝐝𝐚𝐤 𝐬𝐩𝐚𝐦!\n➵ 𝐇𝐚𝐧𝐲𝐚 𝐦𝐞𝐧𝐚𝐧𝐲𝐚𝐤𝐚𝐧 𝐬𝐞𝐩𝐮𝐭𝐚𝐫 𝐛𝐨𝐭 𝐤𝐞𝐩𝐚𝐝𝐚 𝐎𝐰𝐧𝐞𝐫, 𝐣𝐚𝐧𝐠𝐚𝐧 𝐬𝐨𝐤 𝐚𝐬𝐢𝐤 𝐝𝐞𝐤\n\n❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱\n\n❗️𝙋𝙀𝙍𝙃𝘼𝙏𝙄𝘼𝙉❗️\n𝙈𝙚𝙡𝙖𝙣𝙜𝙜𝙖𝙧 𝙥𝙚𝙧𝙖𝙩𝙪𝙧𝙖𝙣 𝙙𝙞𝙖𝙩𝙖𝙨 𝙙𝙖𝙥𝙖𝙩 𝙢𝙚𝙢𝙗𝙪𝙖𝙩 𝘼𝙣𝙙𝙖 𝙙𝙞 𝙠𝙞𝙘𝙠 𝙤𝙡𝙚𝙝 𝙖𝙙𝙢𝙞𝙣 𝙖𝙩𝙖𝙪 𝙙𝙞 𝙗𝙖𝙣 𝙊𝙬𝙣𝙚𝙧, 𝙢𝙤𝙝𝙤𝙣 𝙜𝙪𝙣𝙖𝙠𝙖𝙣 𝙗𝙤𝙩 𝙙𝙚𝙣𝙜𝙖𝙣 𝙗𝙞𝙟𝙖𝙠` }, { quoted: m })
+sock.sendMessage(from, { image: { url: './storage/image/rules.jpg' }, caption: `*╭╮╱╭┳━━━┳╮╱╱╭━━━╮*\n*┃┃╱┃┃╭━╮┃┃╱╱┃╭━╮┃*\n*┃╰━╯┃┃╱┃┃┃╱╱┃┃╱┃┃*\n*┃╭━╮┃╰━╯┃┃╱╭┫┃╱┃┃*\n*┃┃╱┃┃╭━╮┃╰━╯┃╰━╯┃*\n*╰╯╱╰┻╯╱╰┻━━━┻━━━╯*\n\n\*𝐇𝐚𝐥𝐨 𝐊𝐚𝐤 ${m.pushName}*👋, *𝐌𝐨𝐡𝐨𝐧 𝐩𝐚𝐭𝐮𝐡𝐢 𝐑𝐮𝐥𝐞𝐬 𝐝𝐢𝐛𝐚𝐰𝐚𝐡 𝐢𝐧𝐢 𝐲𝐚* 😊\n⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻\n➵ 𝐃𝐢𝐥𝐚𝐫𝐚𝐧𝐠 𝐒𝐩𝐚𝐦 𝐛𝐨𝐭\n➵ 𝐃𝐢𝐥𝐚𝐫𝐚𝐧𝐠 𝐌𝐞𝐧𝐞𝐥𝐩𝐨𝐧 𝐧𝐨𝐦𝐨𝐫 𝐁𝐨𝐭\n➵ 𝐃𝐢𝐥𝐚𝐫𝐚𝐧𝐠 𝐌𝐞𝐧𝐞𝐥𝐩𝐨𝐧 𝐧𝐨𝐦𝐨𝐫 𝐎𝐰𝐧𝐞𝐫\n➵ 𝐏𝐚𝐭𝐮𝐡𝐢 𝐚𝐭𝐮𝐫𝐚𝐧 𝐠𝐫𝐮𝐩 𝐲𝐚𝐧𝐠 𝐬𝐮𝐝𝐚𝐡 𝐝𝐢𝐭𝐞𝐭𝐚𝐩𝐤𝐚𝐧 𝐚𝐝𝐦𝐢𝐧\n➵ 𝐉𝐢𝐤𝐚 𝐢𝐧𝐠𝐢𝐧 𝐛𝐞𝐫𝐦𝐚𝐢𝐧 𝐠𝐚𝐦𝐞, 𝐬𝐞𝐛𝐚𝐢𝐤𝐧𝐲𝐚 𝐝𝐢𝐥𝐚𝐤𝐮𝐤𝐚𝐧 𝐝𝐢 𝐜𝐡𝐚𝐭 𝐩𝐫𝐢𝐛𝐚𝐝𝐢 𝐝𝐞𝐧𝐠𝐚𝐧 𝐛𝐨𝐭 𝐚𝐠𝐚𝐫 𝐭𝐢𝐝𝐚𝐤 𝐬𝐩??𝐦!\n➵ 𝐇𝐚𝐧𝐲𝐚 𝐦𝐞𝐧𝐚𝐧𝐲𝐚𝐤𝐚𝐧 𝐬𝐞𝐩𝐮𝐭𝐚𝐫 𝐛𝐨𝐭 𝐤𝐞𝐩𝐚𝐝𝐚 𝐎𝐰𝐧𝐞𝐫, 𝐣𝐚𝐧𝐠𝐚𝐧 𝐬𝐨𝐤 𝐚𝐬𝐢𝐤 𝐝𝐞𝐤\n\n❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱❱\n\n❗️𝙋𝙀𝙍𝙃𝘼𝙏𝙄𝘼𝙉❗️\n𝙈𝙚𝙡𝙖𝙣𝙜𝙜𝙖𝙧 𝙥𝙚𝙧𝙖𝙩𝙪𝙧𝙖𝙣 𝙙𝙞𝙖𝙩𝙖𝙨 𝙙𝙖𝙥𝙖𝙩 𝙢𝙚𝙢𝙗𝙪𝙖𝙩 𝘼𝙣𝙙𝙖 𝙙𝙞 𝙠𝙞𝙘𝙠 𝙤𝙡𝙚𝙝 𝙖𝙙𝙢𝙞𝙣 𝙖𝙩𝙖𝙪 𝙙𝙞 𝙗𝙖𝙣 𝙊𝙬𝙣𝙚𝙧, 𝙢𝙤𝙝𝙤𝙣 𝙜𝙪𝙣𝙖𝙠𝙖𝙣 𝙗𝙤𝙩 𝙙𝙚𝙣𝙜𝙖𝙣 𝙗𝙞𝙟𝙖𝙠` }, { quoted: m })
 break
   case 'waifu': case 'megumin':
 case 'shinobu':
@@ -3968,6 +3980,13 @@ if (q.includes('--help')) return reply(examlink)
     sock.sendMessage(from, { audio: { url: musim_duren_a }, mimetype: 'audio/mp4' }, { quoted: m })
    }
  break
+case 'facebook':{
+                reply(`*Loading....⌛*`)
+                let fetch = await fetchJson(`https://zenzapis.xyz/downloader/facebook?apikey=dc311285aa&url=`)
+                let i = fetch.result 
+                sock.sendMessage(from, { video: { url: i.medias[0].url }, caption: `Nih Hasil Ngab\nJangan Lupa Apa?`})
+            }
+            break
 case 'instagram': case 'ig': case 'igdl': case 'igtv': case 'igreel': {
                 reply(`*Loading....⌛*`)
                 let fetch = await fetchJson(`https://zenzapis.xyz/downloader/instagram?url=${q}&apikey=dc311285aa`)
