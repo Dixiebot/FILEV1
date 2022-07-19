@@ -8,7 +8,6 @@
  const util = require('util')
  const exif = new Exif();
  const moment = require("moment-timezone")
- const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
  const speed = require("performance-now");
  const fetch = require('node-fetch')
  const brainly = require('brainly-scraper');
@@ -97,6 +96,10 @@ const ph = require('../scrape/photooxy.js')
  let _registered = JSON.parse(fs.readFileSync('./storage/user/registered.json'))
  let textproo = Options.textpro
  let thumb = fs.readFileSync('./storage/image/ArielGantengBangetWowOmaygatEpribadihTeetewtwtetwArielSPnihbostengtengteng.jpg') 
+ const tanggal = moment.tz('Asia/Jakarta').format('dddd') + ', ' + moment.tz('Asia/Jakarta').format('LL')
+const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
+const timeMak = moment().tz('Asia/Makassar').format("HH:mm:ss");
+const timeJay = moment().tz('Asia/Jayapura').format("HH:mm:ss");
  const { pinterest, wallpaper, porno, hentai, quotesAnime } = require('../scrape/ApiOrScrap')
  const { addPlayGame, getJawabanGame, isPlayGame, cekWaktuGame, getGamePosi } = require("../../storage/user/game");
  const tebakkimia = fs.readFileSync('./FunctionMD/scrape/Result/Game/tebakkimia.json');
@@ -148,10 +151,35 @@ module.exports = async (
    const chats = (m.xtype === 'conversation' && m.message.conversation) ? m.message.conversation : (m.xtype == 'imageMessage') && m.message.imageMessage.caption ? m.message.imageMessage.caption : (m.xtype == 'documentMessage') && m.message.documentMessage.caption ? m.message.documentMessage.caption : (m.xtype == 'videoMessage') && m.message.videoMessage.caption ? m.message.videoMessage.caption : (m.xtype == 'extendedTextMessage') && m.message.extendedTextMessage.text ? m.message.extendedTextMessage.text : (m.xtype == 'buttonsResponseMessage' && m.message.buttonsResponseMessage.selectedButtonId) ? m.message.buttonsResponseMessage.selectedButtonId : (m.xtype == 'templateButtonReplyMessage') && m.message.templateButtonReplyMessage.selectedId ? m.message.templateButtonReplyMessage.selectedId : ''
    const args = ordermessage.trim().split(/ +/).slice(1)
    const botNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net'
+   
+//══════════[ WAKTU ]══════════//
+
+const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
+        if(time2 < "23:59:00"){
+        var ucapanWaktu = 'Selamat Malam 🌌'
+}
+        if(time2 < "19:00:00"){
+        var ucapanWaktu = 'Selamat Petang 🌆'
+}
+        if(time2 < "18:00:00"){
+        var ucapanWaktu = 'Selamat Sore 🌇'
+}
+        if(time2 < "15:00:00"){
+        var ucapanWaktu = 'Selamat Siang 🏞'
+}
+        if(time2 < "11:00:00"){
+        var ucapanWaktu = 'Selamat Pagi 🌅'
+}
+        if(time2 < "05:00:00"){
+        var ucapanWaktu = 'Selamat malam 🏙'
+}
 
    const order = ordermessage.slice(1).trim().split(/ +/).shift().toLowerCase()
    const sender = m.sender
    const quotedMsg = m.isMedia
+   const mentions = (teks, memberr, id) => {
+   (id == null || id == undefined || id == false) ? sock.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : sock.sendMessage(from, teks.trim(), extendedText, { quoted: fgi, contextInfo: { "mentionedJid": memberr } })
+   }
    const q = args.join(' ')       
    const isCmd = ordermessage.startsWith(prefix)   
    const isGroup = from.endsWith('@g.us') 
@@ -209,11 +237,17 @@ function randomNomor(min, max = null) {
    let headtqto = "╭╾─「 Thanks To✨ 」╾───╮"
    let endbordertqto = "╰╾───────────────╾╯"
    let end = "╰╾────────────────╼▢"
-const MenuList2 = `*Hallo Terimakasih Sudah Memakai Bot Ini*\n*_Silahkan Klick Tombol Di Bawah ya_*`
+const MenuList2 = `*Hallo* *${m.pushName}*👋, *${ucapanWaktu}*\n*Terimakasih Sudah Memakai Bot Ini*\n*_Silahkan Klick Tombol Di Bawah ya_*`
 const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║╠─║─║─║║║║║╠─*\n*╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝*
 
 
-*Halo ${m.pushName}*, *Selamat* *${salam}*👋
+*Halo ${m.pushName}*, *${ucapanWaktu}*
+
+\`\`\`❏「 WAKTU INDONESIA 」\`\`\`
+>>> *Tanggal* : 📆 ${tanggal} 
+>>> *Wib* : 🕐 ${time} WIB
+>>> *Wita* : 🕑${timeMak} WITA
+>>> *Wit* : 🕓${timeJay} WIT
 
 
 ✘ *I N F O - B O T*
@@ -222,7 +256,7 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➭ *Library : Baileys-Md*
 ➭ *Version :* *2.1.3*
 ➭ *Nomor Owner* : wa.me/62895364443072
-                                 : wa.me/6282245799282
+                                : wa.me/6282245799282
    
 ✘ *G R O U P - M E N U*
 
@@ -1985,12 +2019,12 @@ if (q == "off") {
 }
 break
 case 'gombalan':
-    var gombal = JSON.parse(fs.readFileSync("./FunctionMD/scrape/gombalan.json"))
+var gombal = JSON.parse(fs.readFileSync("./FunctionMD/scrape/gombalan.json"))
 var hasil = pickRandom(gombal)
 var gom = [
-			{ quickReplyButton: { displayText: `Next `, id: `${prefix}gombalan` } },
-		]
-		sock.sendMessage(from, {text: hasil, templateButtons: gom, footer: `Jangan baper lu dek`, mentions: [m.sender]} )
+{ quickReplyButton: { displayText: `Next `, id: `${prefix}gombalan` } },
+]
+sock.sendMessage(from, {text: hasil, templateButtons: gom, footer: `Jangan baper lu dek`, mentions: [m.sender]} )
 break
 case 'revoke': case 'resetlink':
 if (q.includes('--help')) return reply(examkosong) 
@@ -2287,7 +2321,7 @@ if (q.includes('--help')) return reply(examquery)
   case 'arielsandypermana':{
  {
                 let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "🌀 Semua Menu", rowId: "#menu2", description: "Menampilkan Semua Menu 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "👻 Group Menu", rowId: "#groupmenu", description: "Menampilkan Menu Group"},{title: "📢 Download Menu", rowId: "#downloadmenu", description: "Menampilkan Menu Download"},{title: "🌚 Convert Menu", rowId: "#convertmenu", description: "Menampilkan Menu Convert"},{title: "🔥Image Menu", rowId: "#imagemenu", description: "Menampilkan Image Menu"},{title: "🫂Fun Menu", rowId: "#funmenu", description: "Menampilkan Fun Menu"},{title: "⚔️ RPG Menu", rowId: "#rpgmenu", description: "Menampilkan Menu RPG ⚔️"},{title: "📖 Textpro Menu", rowId: "#textpromenu", description: "Menampilkan Menu Textpro"},{title: "🗣️ Info Menu", rowId: "#infomenu", description: "Menampilkan Menu Informasi"},{title: "🍳 Google Menu", rowId: "#googlemenu", description: "Menampilkan Menu Google"},{title: "🤖 Random Menu", rowId: "#randommenu", description: "Menampilkan Menu Random"},{title: "🎧 Sound Menu", rowId: "#soundmenu", description: "Menampilkan Menu Musik"},{title: "📖 Kisah Menu", rowId: "#kisahmenu", description: "Menampilkan Menu Kisah Nabi"},{title: "👀 Wibu Menu", rowId: "#animemenu", description: "Menampilkan Menu Wibu"},{title: "⌨️ Tools Menu", rowId: "#toolsmenu", description: "Menampilkan Menu Tools"},{title: "🦃 MTK Menu", rowId: "#mtkmenu", description: "Menampilkan Menu MTK"},{title: "🎮 Game Menu", rowId: "#gamemenu", description: "Menampilkan Menu Game"},{title: "☢️ Virtex Menu", rowId: "#virtexmenu", description: "Anda Ingin War? Yuk Cobain Virtex 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "☠️ WA Imun Menu", rowId: "#wamenu", description: "WhatsApp Anti Virtex"}, ]}    ]
-                let listMessage = {footer: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀",text: `*╭╮╱╭┳━━━┳╮╱╱╭━━━╮*\n*┃┃╱┃┃╭━╮┃┃╱╱┃╭━╮┃*\n*┃╰━╯┃┃╱┃┃┃╱╱┃┃╱┃┃*\n*┃╭━╮┃╰━╯┃┃╱╭┫┃╱┃┃*\n*┃┃╱┃┃╭━╮┃╰━╯┃╰━╯┃*\n*╰╯╱╰┻╯╱╰┻━━━┻━━━╯*\n\n\n*Halo Semuanya Saya 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭 Siap Membantu Anda Kapanpun, Jika ada pertanyaan silahkan Hubungi Owner ya Kak*☺\n\n_*Note:*Bot masih dalam pengembangan, mohon dimaklumi bila terjadi error*_\n\n*fyi ketik .menu2 untuk langsung ke daftar menu*`,buttonText: "LIST",sections}
+                let listMessage = {footer: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀",text: `*╭╮╱╭┳━━━┳╮╱╱╭━━━╮*\n*┃┃╱┃┃╭━╮┃┃╱╱┃╭━╮┃*\n*┃╰━╯┃┃╱┃┃┃╱╱┃┃╱┃┃*\n*┃╭━╮┃╰━╯┃┃╱╭┫┃╱┃┃*\n*┃┃╱┃┃╭━╮┃╰━╯┃╰━╯┃*\n*╰╯╱╰┻╯╱╰┻━━━┻━━━╯*\n\n\n*Halo Semuanya Saya 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭 Siap Membantu Anda Kapanpun, Jika ada pertanyaan silahkan Hubungi Owner ya Kak*☺\n\n_*Note*: *Bot masih dalam pengembangan, mohon dimaklumi bila terjadi error*_\n\n*fyi ketik .menu2 untuk langsung ke daftar menu*`,buttonText: "LIST",sections}
                 let sendm =  sock.sendMessage( from, listMessage, {quoted :m })
                 }
             }
