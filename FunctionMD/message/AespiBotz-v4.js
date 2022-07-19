@@ -243,13 +243,13 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 
 ✘ *D O W N L O A D - M E N U*
 
-➭ ${prefix}play
-➭ ${prefix}twitter
-➭ ${prefix}tiktoknowm
-➭ ${prefix}tiktokmp3
-➭ ${prefix}youtubemp3
-➭ ${prefix}youtubemp4
-➭ ${prefix}mediafire
+➭ ${prefix}play <judul>
+➭ ${prefix}twitter<link>
+➭ ${prefix}tiktoknowm <link>
+➭ ${prefix}tiktokmp3 <link>
+➭ ${prefix}youtubemp3 <link>
+➭ ${prefix}youtubemp4 <link>
+➭ ${prefix}instagram <link>
 
 ✘ *C O N V E R T - M E N U*
 
@@ -2293,7 +2293,7 @@ if (q.includes('--help')) return reply(examquery)
             }
             break
 case 'downloadmenu':{
-  	m.reply(from, '✘ *D O W N L O A D - M E N U*\n\n➭ #play\n➭ #twitter\n➭ #tiktoknowm\n➭ #tiktokmp3\n➭ #youtubemp3\n➭ #youtubemp4\n➭ #mediafire', { quoted : m } )
+  	m.reply(from, '✘ *D O W N L O A D - M E N U*\n\n➭ #play\n➭ #twitter\n➭ #tiktoknowm\n➭ #tiktokmp3\n➭ #youtubemp3\n➭ #youtubemp4\n➭ #instagram', { quoted : m } )
 }
 break
 case 'groupmenu':{
@@ -3968,7 +3968,12 @@ if (q.includes('--help')) return reply(examlink)
     sock.sendMessage(from, { audio: { url: musim_duren_a }, mimetype: 'audio/mp4' }, { quoted: m })
    }
  break
-
+case 'instagram': case 'ig': case 'igdl': case 'igtv': case 'igreel': {
+                reply(`*Loading....⌛*`)
+                let fetch = await fetchJson(`https://zenzapis.xyz/downloader/instagram?url=${q}&apikey=dc311285aa`)
+                for (let i of fetch.result) sock.sendMessage(from, { video: { url: i.url }, caption: `Nih Hasil Ngab\nJangan Lupa Apa?`})
+            }
+            break
   case 'tiktoknowm':{
 if (q.includes('--help')) return reply(examlink) 
   if (!q) return reply('Contoh : #tiktoknowm Link Video Tiktok')
