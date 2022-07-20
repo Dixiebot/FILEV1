@@ -85,7 +85,7 @@ const ph = require('../scrape/photooxy.js')
  const rikagusriani = fs.readFileSync("./FunctionMD/scrape/Result/Asupan/rikagusriani.json");
  const { wikiSearch } = require('../scrape/wiki.js');
  const { TiktokDownloader } = require('../scrape/tiktokdl') 
- const antilink = JSON.parse(fs.readFileSync('./storage/group/antilink.json'))
+ const _antilink = JSON.parse(fs.readFileSync('./Ariel-SP_Ganteng/antilink.json'))
  const Options = require('../settings/options.js')
  const afk = require("../../storage/user/afk.js");
  const rules = fs.readFileSync('./storage/image/rules.jpg')
@@ -181,13 +181,13 @@ const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
    (id == null || id == undefined || id == false) ? sock.sendMessage(from, teks.trim(), extendedText, { contextInfo: { "mentionedJid": memberr } }) : sock.sendMessage(from, teks.trim(), extendedText, { quoted: fgi, contextInfo: { "mentionedJid": memberr } })
    }
    const q = args.join(' ')       
+   const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
    const isCmd = ordermessage.startsWith(prefix)   
    const isGroup = from.endsWith('@g.us') 
    const itulho = isGroup ? (m.key.participant ? m.key.participant : m.participant) : m.key.remoteJid 
    const isOwner = OwnerNumber.includes(itulho)      
    const groupMetdata = isGroup ? await sock.groupMetadata(from) : ''
    const groupName = isGroup ? await groupMetdata.subject : ''   
-   const isAntiLink = isGroup ? antilink.includes(m.sender) : false
    const groupMetadata = isGroup ? await sock.groupMetadata(from) : ''
    const groupMembers = isGroup ? groupMetadata.participants : ''
    const groupAdmins = isGroup ? m.getGroupAdmins(groupMembers) : ''
@@ -244,273 +244,258 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 *Halo ${m.pushName}*, *${ucapanWaktu}*
 
 \`\`\`❏「 WAKTU INDONESIA 」\`\`\`
->>> *Tanggal* : 📆 ${tanggal} 
->>> *Wib* : 🕐 ${time} WIB
->>> *Wita* : 🕑${timeMak} WITA
->>> *Wit* : 🕓${timeJay} WIT
+>>> 📆 ${tanggal} 
+>>> 🕐 ${time} WIB
 
 
-✘ *I N F O - B O T*
-➭ *Owner Name* : 𝐅𝐢𝐤𝐫𝐲𝐅𝐀
-➭ *Bot Name : ${Options.info.botName}*
-➭ *Library : Baileys-Md*
-➭ *Version :* *2.1.3*
-➭ *Nomor Owner* : wa.me/62895364443072
-                                : wa.me/6282245799282
+
+𖣘 *𝕀ℕ𝔽𝕆 - 𝔹𝕆𝕋*
+
+➥ *Owner Name* : 𝐅𝐢𝐤𝐫𝐲𝐅𝐀
+➥ *Bot Name : ${Options.info.botName}*
+➥ *Library : Baileys-Md*
+➥ *Version :* *2.1.3*
+➥ *Nomor Owner* : wa.me/62895364443072
+                                 : wa.me/6282245799282
    
-✘ *G R O U P - M E N U*
+𖣘 *𝔾ℝ𝕆𝕌ℙ - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}add
-➭ ${prefix}kick
-➭ ${prefix}promote
-➭ ${prefix}demote
-➭ ${prefix}setnamegroup
-➭ ${prefix}grup <on/off>
-➭ ${prefix}setdesc
-➭ ${prefix}resetlink
-➭ ${prefix}afk
-➭ ${prefix}broadcast (Owner)
-➭ ${prefix}hidetag <teks>
-➭ ${prefix}tagall <teks>
-➭ ${prefix}listadmin
-➭ ${prefix}linkgc
+➥ ${prefix}add
+➥ ${prefix}kick
+➥ ${prefix}promote
+➥ ${prefix}demote
+➥ ${prefix}setnamegroup
+➥ ${prefix}grup <on/off>
+➥ ${prefix}setdesc
+➥ ${prefix}resetlink
+➥ ${prefix}afk
+➥ ${prefix}broadcast (Owner)
+➥ ${prefix}hidetag <teks>
+➥ ${prefix}tagall <teks>
+➥ ${prefix}listadmin
+➥ ${prefix}linkgc
+➥ ${prefix}antilink on/off
 
-✘ *D O W N L O A D - M E N U*
+𖣘 *𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}play <judul>
-➭ ${prefix}twitter<link>
-➭ ${prefix}tiktoknowm <link>
-➭ ${prefix}tiktokmp3 <link>
-➭ ${prefix}youtubemp3 <link>
-➭ ${prefix}youtubemp4 <link>
-➭ ${prefix}instagram <link>
+➥ ${prefix}play <judul>
+➥ ${prefix}twitter<link>
+➥ ${prefix}tiktoknowm <link>
+➥ ${prefix}tiktokmp3 <link>
+➥ ${prefix}youtubemp3 <link>
+➥ ${prefix}youtubemp4 <link>
+➥ ${prefix}instagram <link>
 
-✘ *C O N V E R T - M E N U*
+𖣘 *ℂ𝕆ℕ𝕍𝔼ℝ𝕋 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}toimg
-➭ ${prefix}tomp4
-➭ ${prefix}tomp3
-➭ ${prefix}togif
-➭ ${prefix}unduh
-➭ ${prefix}sticker
-➭ ${prefix}patrik
+➥ ${prefix}toimg
+➥ ${prefix}tomp4
+➥ ${prefix}tomp3
+➥ ${prefix}togif
+➥ ${prefix}unduh
+➥ ${prefix}sticker
+➥ ${prefix}patrik
 
-✘ *I M A G E - M E N U*
+𖣘 *𝕀𝕄𝔸𝔾𝔼 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}meme
-➭ ${prefix}cosplayer
-➭ ${prefix}randomwallpaper
-➭ ${prefix}wallpaperanime
-➭ ${prefix}husbu
-➭ ${prefix}naruto
-➭ ${prefix}sasuke
+➥ ${prefix}meme
+➥ ${prefix}cosplayer
+➥ ${prefix}randomwallpaper
+➥ ${prefix}wallpaperanime
+➥ ${prefix}husbu
+➥ ${prefix}naruto
+➥ ${prefix}sasuke
+➥ ${prefix}darkjokes
+➥ ${prefix}darkjokes2
+➥ ${prefix}onecak
+➥ ${prefix}cecan
+➥ ${prefix}cogan
 
-✘ *R P G - M E N U*
+𖣘 *𝔽𝕌ℕ - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}limituser
-➭ ${prefix}berburu
-➭ ${prefix}mancing
-➭ ${prefix}menambang
-➭ ${prefix}mining
-➭ ${prefix}heal
+➥ ${prefix}apakah <query>
+➥ ${prefix}bisakah <query>
+➥ ${prefix}bagaimanakah <query>
+➥ ${prefix}rate <query>
+➥ ${prefix}cekganteng <nama>
+➥ ${prefix}cekcantik <nama>
+➥ ${prefix}ceksange <nama>
+➥ ${prefix}cekgay <nama>
+➥ ${prefix}ceklesbi<nama>
+➥ ${prefix}kapankah<nama>
+➥ ${prefix}cekmati<nama>
+➥ ${prefix}quotes
+➥ ${prefix}gombalan
 
-✘*F U N - M E N U*
+𖣘 *𝕋𝔼𝕏𝕋ℙℝ𝕆 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}apakah
-➭ ${prefix}bisakah
-➭ ${prefix}bagaimanakah
-➭ ${prefix}rate
-➭ ${prefix}cekganteng
-➭ ${prefix}cekcantik
-➭ ${prefix}ceksange
-➭ ${prefix}cekgay
-➭ ${prefix}ceklesbi
-➭ ${prefix}kapankah
-➭ ${prefix}cekmati
-➭ ${prefix}darkjokes
-➭ ${prefix}quotes
-➭ ${prefix}gombalan
+➥ ${prefix}arielpetir <teks>
+➥ ${prefix}arielpetir2 <teks>
+➥ ${prefix}bussines3d <teks> 
+➥ ${prefix}stoneariel3d<teks>
+➥ ${prefix}neon3dariel <teks>
+➥ ${prefix}neon <teks>
+➥ ${prefix}impresiveariel <teks>
+➥ ${prefix}neondevil3dariel <teks>
+➥ ${prefix}underwater3d <teks>
+➥ ${prefix}bears3dariel <teks>
+➥ ${prefix}grafityariel3d <teks>
+➥ ${prefix}metaldarkariel <teks>
+➥ ${prefix}halloweenariel <teks>
+➥ ${prefix}captainamerikabyariel <teks>
+➥ ${prefix}spacetext <teks>
+➥ ${prefix}plastic3d <teks>
+➥ ${prefix}dropwater3d <teks>
+➥ ${prefix}avengerslogo3d <teks>
+➥ ${prefix}harrypoter <teks>
+➥ ${prefix}brokenglass <teks>
+➥ ${prefix}wonderfulgravity3d <teks>
+➥ ${prefix}futuristicneon3d <teks>
+➥ ${prefix}skytext3d <teks>
+➥ ${prefix}robotr2 <teks>
+➥ ${prefix}natal3d <teks>
+➥ ${prefix}matrixstyle <teks>
+➥ ${prefix}waterpiperariel <teks>
+➥ ${prefix}blackpink <teks>
+➥ ${prefix}lightglow <teks>
+➥ ${prefix}glass <teks>
+➥ ${prefix}hoorror_blood <teks>
+➥ ${prefix}sand <teks>
+➥ ${prefix}sketch <teks>
+➥ ${prefix}magma <teks>
+➥ ${prefix}batman <teks>
+➥ ${prefix}demon <teks>
+➥ ${prefix}sci_fi <teks>
+➥ ${prefix}ice <teks> 
+➥ ${prefix}sea_metal <teks>
+➥ ${prefix}skeleton <teks>
+➥ ${prefix}transformer <teks>
+➥ ${prefix}warning <teks>
+➥ ${prefix}denim <teks>
 
-✘ *T E X T P R O - M E N U*
+𖣘 *𝕀ℕ𝔽𝕆 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}arielpetir <teks>
-➭ ${prefix}arielpetir2 <teks>
-➭ ${prefix}bussines3d <teks> 
-➭ ${prefix}stoneariel3d<teks>
-➭ ${prefix}neon3dariel <teks>
-➭ ${prefix}neon <teks>
-➭ ${prefix}impresiveariel <teks>
-➭ ${prefix}neondevil3dariel <teks>
-➭ ${prefix}underwater3d <teks>
-➭ ${prefix}bears3dariel <teks>
-➭ ${prefix}grafityariel3d <teks>
-➭ ${prefix}metaldarkariel <teks>
-➭ ${prefix}halloweenariel <teks>
-➭ ${prefix}captainamerikabyariel <teks>
-➭ ${prefix}spacetext <teks>
-➭ ${prefix}plastic3d <teks>
-➭ ${prefix}dropwater3d <teks>
-➭ ${prefix}avengerslogo3d <teks>
-➭ ${prefix}harrypoter <teks>
-➭ ${prefix}brokenglass <teks>
-➭ ${prefix}wonderfulgravity3d <teks>
-➭ ${prefix}futuristicneon3d <teks>
-➭ ${prefix}skytext3d <teks>
-➭ ${prefix}robotr2 <teks>
-➭ ${prefix}natal3d <teks>
-➭ ${prefix}matrixstyle <teks>
-➭ ${prefix}waterpiperariel <teks>
-➭ ${prefix}blackpink <teks>
-➭ ${prefix}lightglow <teks>
-➭ ${prefix}glass <teks>
-➭ ${prefix}hoorror_blood <teks>
-➭ ${prefix}sand <teks>
-➭ ${prefix}sketch <teks>
-➭ ${prefix}magma <teks>
-➭ ${prefix}batman <teks>
-➭ ${prefix}demon <teks>
-➭ ${prefix}sci_fi <teks>
-➭ ${prefix}ice <teks> 
-➭ ${prefix}sea_metal <teks>
-➭ ${prefix}skeleton <teks>
-➭ ${prefix}transformer <teks>
-➭ ${prefix}warning <teks>
-➭ ${prefix}denim <teks>
+➥ ${prefix}owner
+➥ ${prefix}leaderboard
+➥ ${prefix}runtime
+➥ ${prefix}profile
+➥ ${prefix}inventori
 
-✘ *I N F O - M E N U*
+𖣘 *𝕀ℕ𝕋𝔼ℝℕ𝔼𝕋 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}owner
-➭ ${prefix}leaderboard
-➭ ${prefix}runtime
-➭ ${prefix}profile
-➭ ${prefix}inventori
+➥ ${prefix}detiknews
+➥ ${prefix}wiki
+➥ ${prefix}gempa
+➥ ${prefix}lirik
+➥ ${prefix}jadwaltv
+➥ ${prefix}covidindo
+➥ ${prefix}pinterest
+➥ ${prefix}anime
 
-✘ *G O O G L E - M E N U*
+𖣘 *ℝ𝔸ℕ𝔻𝕆𝕄 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}detiknews
-➭ ${prefix}wiki
-➭ ${prefix}gempa
-➭ ${prefix}lirik
-➭ ${prefix}jadwaltv
-➭ ${prefix}covidindo
-➭ ${prefix}pinterest
-➭ ${prefix}anime
+➥ ${prefix}waifu
+➥ ${prefix}simi
+➥ ${prefix}awoo
+➥ ${prefix}shinobu
+➥ ${prefix}neko
+➥ ${prefix}megumin
+➥ ${prefix}couple
+➥ ${prefix}aesthetic
+➥ ${prefix}artinama
+➥ ${prefix}storywa 
+➥ ${prefix}asupan
+➥ ${prefix}moodbooster
 
-✘ *R A N D O M - M E N U*
+𖣘 *𝕊𝕆𝕌ℕ𝔻 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}waifu
-➭ ${prefix}simi
-➭ ${prefix}awoo
-➭ ${prefix}shinobu
-➭ ${prefix}neko
-➭ ${prefix}megumin
-➭ ${prefix}couple
-➭ ${prefix}aesthetic
-➭ ${prefix}artinama
-➭ ${prefix}storywa
-➭ ${prefix}asupan
-➭ ${prefix}moodbooster
+➥ ${prefix}sound1
+➥ ${prefix}sound2
+➥ ${prefix}sound3
+➥ ${prefix}sound4
+➥ ${prefix}sound5
+➥ ${prefix}sound6
+➥ ${prefix}sound7
+➥ ${prefix}sound8
+➥ ${prefix}sound9
+➥ ${prefix}sound10
+➥ ${prefix}sound11
+➥ ${prefix}sound12
+➥ ${prefix}sound13
+➥ ${prefix}sound14
+➥ ${prefix}sound15
+➥ ${prefix}sound16
+➥ ${prefix}sound17
+➥ ${prefix}sound19
+➥ ${prefix}sound19
+➥ ${prefix}sound20
+➥ ${prefix}sound21
 
-✘ *S O U N D - M E N U*
+𖣘 *𝕂𝕀𝕊𝔸ℍ - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}sound1
-➭ ${prefix}sound2
-➭ ${prefix}sound3
-➭ ${prefix}sound4
-➭ ${prefix}sound5
-➭ ${prefix}sound6
-➭ ${prefix}sound7
-➭ ${prefix}sound8
-➭ ${prefix}sound9
-➭ ${prefix}sound10
-➭ ${prefix}sound11
-➭ ${prefix}sound12
-➭ ${prefix}sound13
-➭ ${prefix}sound14
-➭ ${prefix}sound15
-➭ ${prefix}sound16
-➭ ${prefix}sound17
-➭ ${prefix}sound19
-➭ ${prefix}sound19
-➭ ${prefix}sound20
-➭ ${prefix}sound21
+➥ ${prefix}kisahnabi adam
+➥ ${prefix}kisahnabi ayyub
+➥ ${prefix}kisahnabi daud
+➥ ${prefix}kisahnabi dzulkifli
+➥ ${prefix}kisahnabi harun
+➥ ${prefix}kisahnabi hud
+➥ ${prefix}kisahnabi ibrahim
+➥ ${prefix}kisahnabi idris
+➥ ${prefix}kisahnabi ilyas
+➥ ${prefix}kisahnabi ilyasa
+➥ ${prefix}kisahnabi isa
+➥ ${prefix}kisahnabi ishaq
+➥ ${prefix}kisahnabi ismail
+➥ ${prefix}kisahnabi luth
+➥ ${prefix}kisahnabi muhammad
+➥ ${prefix}kisahnabi musa
+➥ ${prefix}kisahnabi nuh
+➥ ${prefix}kisahnabi sholeh
+➥ ${prefix}kisahnabi sulaiman
+➥ ${prefix}kisahnabi syuaib
+➥ ${prefix}kisahnabi yahya
+➥ ${prefix}kisahnabi yaqub
+➥ ${prefix}kisahnabi yunus
+➥ ${prefix}kisahnabi yusuf
+➥ ${prefix}kisahnabi zakariya
 
-✘ *KISAH - M E N U*
+𖣘 *ℚ𝕌ℝ𝔸ℕ - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}kisahnabi adam
-➭ ${prefix}kisahnabi ayyub
-➭ ${prefix}kisahnabi daud
-➭ ${prefix}kisahnabi dzulkifli
-➭ ${prefix}kisahnabi harun
-➭ ${prefix}kisahnabi hud
-➭ ${prefix}kisahnabi ibrahim
-➭ ${prefix}kisahnabi idris
-➭ ${prefix}kisahnabi ilyas
-➭ ${prefix}kisahnabi ilyasa
-➭ ${prefix}kisahnabi isa
-➭ ${prefix}kisahnabi ishaq
-➭ ${prefix}kisahnabi ismail
-➭ ${prefix}kisahnabi luth
-➭ ${prefix}kisahnabi muhammad
-➭ ${prefix}kisahnabi musa
-➭ ${prefix}kisahnabi nuh
-➭ ${prefix}kisahnabi sholeh
-➭ ${prefix}kisahnabi sulaiman
-➭ ${prefix}kisahnabi syuaib
-➭ ${prefix}kisahnabi yahya
-➭ ${prefix}kisahnabi yaqub
-➭ ${prefix}kisahnabi yunus
-➭ ${prefix}kisahnabi yusuf
-➭ ${prefix}kisahnabi zakariya
+➥${prefix}surah
 
-✘ *AL - QUR'AN MENU*
+𖣘 *𝕋𝕆𝕆𝕃𝕊 - 𝕄𝔼ℕ𝕌*
 
-#surah
+➥ ${prefix}tinyurl
+➥ ${prefix}cuttly
+➥ ${prefix}ceklokasi
 
-✘ *A N I M E - M E N U*
+𖣘 *ℝ𝕌𝕄𝕌𝕊 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}chara
-➭ ${prefix}manga
-➭ ${prefix}otakudesu
+➥ ${prefix}luas-segitiga
+➥ ${prefix}kel-segitiga
+➥ ${prefix}luas-persegi
+➥ ${prefix}kel-persegi
+➥ ${prefix}kuadrat
+➥ ${prefix}kubik
 
-✘ *T O O L S - M E N U*
+𖣘 *𝕎𝔸ℝ - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}tinyurl
-➭ ${prefix}cuttly
-➭ ${prefix}ceklokasi
+➥ ${prefix}virtexmenu
+➥ ${prefix}wamenu
 
-✘ *M T K - M E N U*
+𖣘 *𝔾𝔸𝕄𝔼 - 𝕄𝔼ℕ𝕌*
 
-➭ ${prefix}luas-segitiga
-➭ ${prefix}kel-segitiga
-➭ ${prefix}luas-persegi
-➭ ${prefix}kel-persegi
-➭ ${prefix}kuadrat
-➭ ${prefix}kubik
-
-✘ *W A R - M E N U*
-
-➭ ${prefix}virtexmenu
-➭ ${prefix}wamenu
-
-✘ *T R A N S A K S I*
-
-➭ ${prefix}jual _nama_ _jumlah mao di jual_
-➭ ${prefix}beli _nama_ _jumlah mao di beli_
-
-✘ *G A M E - M E N U*
-
-➭ ${prefix}tebakgambar
-➭ ${prefix}kuismath
-➭ ${prefix}tebakkimia
-➭ ${prefix}asahotak
-➭ ${prefix}tebakkalimat
-➭ ${prefix}susunkata
-➭ ${prefix}caklontong
-➭ ${prefix}tekateki
-➭ ${prefix}tebakkabupaten
-➭ ${prefix}tebakbendera
-➭ ${prefix}tebakanime
+➥ ${prefix}tebakgambar
+➥ ${prefix}kuismath
+➥ ${prefix}tebakkimia
+➥ ${prefix}asahotak
+➥ ${prefix}tebakkalimat
+➥ ${prefix}susunkata
+➥ ${prefix}caklontong
+➥ ${prefix}tekateki
+➥ ${prefix}tebakkabupaten
+➥ ${prefix}tebakbendera
+➥ ${prefix}tebakanime
 `
 
    const mentionByTag = m.xtype == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
@@ -573,7 +558,7 @@ await sock.setStatus(`ACTIVE DURING : ${runtime(process.uptime())} TYPE ${prefix
    }
    
    if (afk.checkAfkUser(m.sender, _afk) && !isCmd) {
-    const pep = `*@${m.sender.split("@")[0]}* telah kembali dari AFK!\n\n*Selama* : ${clockString(new Date - afk.getAfkTime(m.sender, _afk))}`
+    const pep = `*@${m.sender.split("@")[0]}* telah kembali dari AFK!\n\n*Selama* : ${clockString(new Date - afk.getAfkTimede,(m.sender, _afk))}`
     reply(pep)
     _afk.splice(afk.getAfkPosition(m.sender, _afk), 1)
     fs.writeFileSync('./storage/user/afk.json', JSON.stringify(_afk))
@@ -679,6 +664,7 @@ let isUser = cekUser(sender)
    const isSapi = getSapi(m.sender)
    const isGajah = getGajah(m.sender)
    const isMonay = getMonay(m.sender)
+   const isAntiLink = isGroup ? _antilink.includes(from) : false
    const isLimit = getLimit(m.sender)
    const isBesi = getBesi(m.sender)
    const isEmas = getEmas(m.sender)
@@ -1024,6 +1010,19 @@ await sock.updateBlockStatus(from, "block")
 if (isCmd && !isUser && !m.key.fromMe)  { 
 addRegisterUser(sender)
 }
+//══════════[ Antilink & Antivirtex ]══════════//
+
+if (chatmessage.includes("https://chat.whatsapp.com/")) {
+if (!isGroup) return
+if (!isAntiLink) return
+if (isGroupAdmins) return
+var kic = `${m.sender.split("@")[0]}@s.whatsapp.net`
+reply(` *「 GROUP LINK DETECTOR 」*\nKamu mengirimkan link grup chat, maaf kamu di kick dari grup`)
+setTimeout(() => {
+sock.groupRemove(from, [kic]).catch((e) => { reply(`BOT HARUS JADI ADMIN`) })
+}, 0)
+}
+
  switch (order) {
 case 'cariteman': 
 case 'start':
@@ -1297,6 +1296,32 @@ case 'susunkata':{
     }
  }
  break
+ case 'antilink': 
+if (!isGroup) return reply('*Khusus Grup*')
+if (!isGroupAdmins && !isOwner) return reply('*Khusus Owner*')
+if (args[0] === 'on') {
+if (isAntiLink) return reply('Sudah Aktif Kak')
+_antilink.push(from)
+fs.writeFileSync('./Ariel-SP_Ganteng/antilink.json', JSON.stringify(_antilink))
+reply(`\`\`\`Sukses ✅, Mengaktifkan fitur antilink di group\`\`\` *${groupMetadata.subject}*`)
+} else if (args[0] === 'off') {
+if (!isAntiLink) return reply('Sudah Mati Kak')
+var ini = _antilink.indexOf(from)
+_antilink.splice(ini, 1)
+fs.writeFileSync('./Ariel-SP_Ganteng/antilink.json', JSON.stringify(_antilink))
+reply(`\`\`\`Sukses ✅, Menonaktifkan fitur antilink di group\`\`\` *${groupMetadata.subject}*`)
+} else if (args[0] === 'on'){
+anu =`Silahkan pilih salah satu\nUntuk fitur antilink`
+punten = [{buttonId: `${prefix}antilink on`, buttonText: {displayText: 'ON ✔️️'}, type: 1},{buttonId: `${prefix}antilink off`, buttonText: {displayText: 'OFF ❌️'}, type: 1}]
+const btngrass = {
+contentText: `${anu}`,
+footerText: `Hayyuk`,
+buttons: punten,
+headerType: 1
+}
+await sock.sendMessage(from, btngrass, MessageType.buttonsMessage, {quoted: m})
+}
+break
 case 'asahotak':{
  if (_asahotak.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
    let upah = randomInt(500, 600)   
@@ -1734,13 +1759,7 @@ const Ariel4 = Ariel2[Ariel3]
 sock.sendMessage(from, { video : { url : Ariel4.url }, caption : 'nih' }) 
 break
 case 'patrik':
-if (q.includes('--help')) return reply(examkosong) 
-     reply(`*Loading....⌛*`)
-const Arielll1 = fs.readFileSync("./Ariel-SP_Ganteng/Patrik/stiker.json");
-const Arielll2 = JSON.parse(Arielll1)
-const Arielll3 = Math.floor(Math.random() * Arielll2.length)
-const Arielll4 = Arielll2[Arielll3]
-sock.sendMessage(from, { image : { url : Arielll4.url }, caption : 'Jika Ingin Di Jadikan Stiker Silahkan Balas Gambar Ini Dan Ketikan #s' }) 
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/patrick?apikey=dc311285aa` }, caption : 'Jika Ingin Di Jadikan Stiker Silahkan Balas Gambar Ini Dan Ketikan #s' }) 
 break
 case 'surah': {
 if (args.length < 1) return reply(`Example : ${prefix}surah 1\nSurah Yang Tersedia 1 - 114`)
@@ -1973,6 +1992,12 @@ const Fikriii = Math.floor(Math.random() * Fikri.length)
 const Fikriiii = Fikri[Fikriii]
 sock.sendMessage(from, { image : { url : Fikriiii }, caption : 'nih' }, { quoted : m}) 
 break
+case 'darkjokes2':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/darkjoke?apikey=dc311285aa` }, caption : 'Done!' }, { quoted : m})
+break
+case 'onecak':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/onecak?apikey=dc311285aa` }, caption : 'Done!' }, { quoted : m})
+break
 case 'meme':
 sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/memeindo?apikey=dc311285aa` }, caption : 'Done!' }, { quoted : m})
 break
@@ -1993,6 +2018,18 @@ sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomanime/v2/na
 break
 case 'sasuke':
 sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomanime/v2/sasuke?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
+break
+case 'cecan':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/cecan?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
+break
+case 'cogan':
+sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/cogan?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
+break
+case 'faktaunik':
+tes = await fetchJson(`https://zenzapis.xyz/randomtext/faktaunik?apikey=`)
+teks = tes.result.
+buffer = `https://telegra.ph/file/7188012d573871aaf4fa0.jpg`
+sock.sendMessage(from, {image:{url:buffer}, caption:teks}, {quoted:m})
 break
 case 'quotes':
 var kotes2 = JSON.parse(fs.readFileSync("./FunctionMD/scrape/quotes.json"))
@@ -2048,12 +2085,6 @@ if (!isBotGroupAdmins) return reply('*Bot bukan Admin*')
 var url = await sock.groupInviteCode(from).catch(() => reply(mess.error.api))
 url = 'https://chat.whatsapp.com/'+url
 reply(url)
-break
-case 'tahta': case 'hartatahta':
-  if (args.length < 2) return reply(`Kirim perintah ${prefix} <Text1>`)
-  reply("Tunggu Sebentar Sedang Membuat Makernya Sekitar 1 Menit Kurang")
-  reply(`Harta Tahta *${q}* Sedang Di Buat`)
-sock.sendMessage(from, {caption: `*HARTA*\n*TAHTA*\n*${q}*`, image: { url: `https://hardianto.xyz/api/maker/harta-tahta?apikey=${keyanto}&text=${q}`}}, {quoted: msg})
 break
 case 'wiki':
 if (q.includes('--help')) return reply(examquery) 
@@ -2320,7 +2351,7 @@ if (q.includes('--help')) return reply(examquery)
   break
   case 'arielsandypermana':{
  {
-                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "🌀 Semua Menu", rowId: "#menu2", description: "Menampilkan Semua Menu 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "👻 Group Menu", rowId: "#groupmenu", description: "Menampilkan Menu Group"},{title: "📢 Download Menu", rowId: "#downloadmenu", description: "Menampilkan Menu Download"},{title: "🌚 Convert Menu", rowId: "#convertmenu", description: "Menampilkan Menu Convert"},{title: "🔥Image Menu", rowId: "#imagemenu", description: "Menampilkan Image Menu"},{title: "🫂Fun Menu", rowId: "#funmenu", description: "Menampilkan Fun Menu"},{title: "⚔️ RPG Menu", rowId: "#rpgmenu", description: "Menampilkan Menu RPG ⚔️"},{title: "📖 Textpro Menu", rowId: "#textpromenu", description: "Menampilkan Menu Textpro"},{title: "🗣️ Info Menu", rowId: "#infomenu", description: "Menampilkan Menu Informasi"},{title: "🍳 Google Menu", rowId: "#googlemenu", description: "Menampilkan Menu Google"},{title: "🤖 Random Menu", rowId: "#randommenu", description: "Menampilkan Menu Random"},{title: "🎧 Sound Menu", rowId: "#soundmenu", description: "Menampilkan Menu Musik"},{title: "📖 Kisah Menu", rowId: "#kisahmenu", description: "Menampilkan Menu Kisah Nabi"},{title: "👀 Wibu Menu", rowId: "#animemenu", description: "Menampilkan Menu Wibu"},{title: "⌨️ Tools Menu", rowId: "#toolsmenu", description: "Menampilkan Menu Tools"},{title: "🦃 MTK Menu", rowId: "#mtkmenu", description: "Menampilkan Menu MTK"},{title: "🎮 Game Menu", rowId: "#gamemenu", description: "Menampilkan Menu Game"},{title: "☢️ Virtex Menu", rowId: "#virtexmenu", description: "Anda Ingin War? Yuk Cobain Virtex 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "☠️ WA Imun Menu", rowId: "#wamenu", description: "WhatsApp Anti Virtex"}, ]}    ]
+                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "🌀 Semua Menu", rowId: "#menu2", description: "Menampilkan Semua Menu 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "👻 Group Menu", rowId: "#groupmenu", description: "Menampilkan Menu Group"},{title: "📢 Download Menu", rowId: "#downloadmenu", description: "Menampilkan Menu Download"},{title: "🌚 Convert Menu", rowId: "#convertmenu", description: "Menampilkan Menu Convert"},{title: "🔥Image Menu", rowId: "#imagemenu", description: "Menampilkan Image Menu"},{title: "🫂Fun Menu", rowId: "#funmenu", description: "Menampilkan Fun Menu"},{title: "📖 Textpro Menu", rowId: "#textpromenu", description: "Menampilkan Menu Textpro"},{title: "🗣️ Info Menu", rowId: "#infomenu", description: "Menampilkan Menu Informasi"},{title: "🍳 Google Menu", rowId: "#googlemenu", description: "Menampilkan Menu Google"},{title: "🤖 Random Menu", rowId: "#randommenu", description: "Menampilkan Menu Random"},{title: "🎧 Sound Menu", rowId: "#soundmenu", description: "Menampilkan Menu Musik"},{title: "📖 Kisah Menu", rowId: "#kisahmenu", description: "Menampilkan Menu Kisah Nabi"},{title: "👀 Wibu Menu", rowId: "#animemenu", description: "Menampilkan Menu Wibu"},{title: "⌨️ Tools Menu", rowId: "#toolsmenu", description: "Menampilkan Menu Tools"},{title: "🦃 MTK Menu", rowId: "#mtkmenu", description: "Menampilkan Menu MTK"},{title: "🎮 Game Menu", rowId: "#gamemenu", description: "Menampilkan Menu Game"},{title: "☢️ Virtex Menu", rowId: "#virtexmenu", description: "Anda Ingin War? Yuk Cobain Virtex 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "☠️ WA Imun Menu", rowId: "#wamenu", description: "WhatsApp Anti Virtex"}, ]}    ]
                 let listMessage = {footer: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀",text: `*╭╮╱╭┳━━━┳╮╱╱╭━━━╮*\n*┃┃╱┃┃╭━╮┃┃╱╱┃╭━╮┃*\n*┃╰━╯┃┃╱┃┃┃╱╱┃┃╱┃┃*\n*┃╭━╮┃╰━╯┃┃╱╭┫┃╱┃┃*\n*┃┃╱┃┃╭━╮┃╰━╯┃╰━╯┃*\n*╰╯╱╰┻╯╱╰┻━━━┻━━━╯*\n\n\n*Halo Semuanya Saya 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭 Siap Membantu Anda Kapanpun, Jika ada pertanyaan silahkan Hubungi Owner ya Kak*☺\n\n_*Note*: *Bot masih dalam pengembangan, mohon dimaklumi bila terjadi error*_\n\n*fyi ketik .menu2 untuk langsung ke daftar menu*`,buttonText: "LIST",sections}
                 let sendm =  sock.sendMessage( from, listMessage, {quoted :m })
                 }
@@ -2335,35 +2366,27 @@ if (q.includes('--help')) return reply(examquery)
             }
             break
 case 'downloadmenu':{
-  	m.reply(from, '✘ *D O W N L O A D - M E N U*\n\n➭ #play\n➭ #twitter\n➭ #tiktoknowm\n➭ #tiktokmp3\n➭ #youtubemp3\n➭ #youtubemp4\n➭ #instagram', { quoted : m } )
+  	m.reply(from, '𖣘 *𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻 - 𝕄𝔼ℕ𝕌*\n\n➥ #play\n➥ #twitter\n➥ #tiktoknowm\n➥ #tiktokmp3\n➥ #youtubemp3\n➥ #youtubemp4\n➥ #instagram', { quoted : m } )
 }
 break
 case 'groupmenu':{
-  	m.reply(from, '✘ *G R O U P - M E N U*\n\n➭ #add\n➭ #kick\n➭ #promote\n➭ #demote\n➭ #setnamegroup\n➭ #grup\n➭ #setdesc\n➭ #resetlink\n➭ #afk\n➭ #broadcast\n➭ #tagall\n➭ #hidetag\n➭ #listadmin\n➭ #linkgc', { quoted : m } )
+  	m.reply(from, '𖣘 *𝔾ℝ𝕆𝕌ℙ - 𝕄𝔼ℕ𝕌*\n\n➥ #add\n➥ #kick\n➥ #promote\n➥ #demote\n➥ #setnamegroup\n➥ #grup\n➥ #setdesc\n➥ #resetlink\n➥ #afk\n➥ #broadcast\n➥ #tagall\n➥ #hidetag\n➥ #listadmin\n➥ #linkgc\n➥ #antilink', { quoted : m } )
 }
 break
 case 'convertmenu':{
-  	m.reply(from, '✘ *C O N V E R T - M E N U*\n\n➭ #toimg\n➭ #tomp4\n➭ #tomp3\n➭ #togif\n➭ #unduh\n➭ #sticker\n➭ #patrik', { quoted : m } )
+  	m.reply(from, '𖣘 *ℂ𝕆ℕ𝕍𝔼ℝ𝕋 - 𝕄𝔼ℕ𝕌*\n\n➥ #toimg\n➥ #tomp4\n➥ #tomp3\n➥ #togif\n➥ #unduh\n➥ #sticker\n➥ #patrik', { quoted : m } )
 }
 break
 case 'imagemenu':{
-  	m.reply(from, '✘ *I M A G E - M E N U*\n\n➭ #meme\n➭ #cosplayer\n➭ #randomwallpaper\n➭ #wallpaperanime\n➭ #husbu\n➭ #naruto\n➭ #sasuke', { quoted : m } )
+  	m.reply(from, '𖣘 *𝕀𝕄𝔸𝔾𝔼 - 𝕄𝔼ℕ𝕌*\n\n➥ #meme\n➥ #cosplayer\n➥ #randomwallpaper\n➥ #wallpaperanime\n➥ #husbu\n➥ #naruto\n➥ #sasuke\n➥ #darkjokes\n➥ #darkjokes2\n➥ #onecak\n➥ #cogan\n➥ #cecan', { quoted : m } )
 }
 break
 case 'funmenu':{
-  	m.reply(from, '✘ *F U N - M E N U*\n\n➭ #apakah\n➭ #bisakah\n➭ #bagaimanakah\n➭ #rate\n➭ #cekganteng\n➭ #cekcantik\n➭ #ceksange\n➭ #cekgay\n➭ #ceklesbi\n➭ #kapankah\n➭ #wangy\n➭ #cekmati\n➭ #darkjokes\n➭ #quotes\n➭ #gombalan', { quoted : m } )
+  	m.reply(from, '𖣘 *𝔽𝕌ℕ - 𝕄𝔼ℕ𝕌*\n\n➥ #apakah\n➥ #bisakah\n➥ #bagaimanakah\n➥ #rate\n➥ #cekganteng\n➥ #cekcantik\n➥ #ceksange\n➥ #cekgay\n➥ #ceklesbi\n➥ #kapankah\n➥ #wangy\n➥ #cekmati\n➥ #quotes\n➥ #gombalan', { quoted : m } )
 }
 break
-case 'rpgmenu':{
-    {
-                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "[ ♂️ ] Cek Limit", rowId: "#limituser", description: "Cek Limit Semua Orang Yang Menggunakan Dixie Bot"},{title: "[ 🏹 ] Berburu", rowId: "#berburu", description: "Berburu Di Hutan"},{title: "[ 🎣 ] Memancing Ikan", rowId: "#mancing", description: "Memancing Ikan"},{title: "[ ⛏️ ] Menambang", rowId: "#menambang", description: "Menambang Untuk Mendapatkan Emas"},{title: "[ ⚒️ ] Mining", rowId: "#mining", description: "Mining Yuk"},{title: "[ ♥️ ] Mengisi Darah", rowId: "#heal", description: "Mengisi Darah Agar Kamu Tidak Mati"}, ]}    ]
-                let listMessage = {footer: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀",text: `Selamat Datang Di Menu Adventure`, buttonText: "Klick Ini Kak",sections}
-                let sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-                }
-            }
-break
 case 'textpromenu':{
-  	m.reply(from, '✘ *T E X T P R O - M E N U*\n\n➭ #arielpetir\n➭ #arielpetir2\n➭ #bussines3d\n➭ #stoneariel3d\n➭ #neon3dariel\n➭ #neon\n➭ #impresiveariel\n➭ #neondevil3dariel\n➭ #underwater3d\n➭ #bears3dariel\n➭ #grafityariel3d\n➭ #metaldarkariel\n➭ #halloweenariel\n➭ #captainamerikabyariel\n➭ #spacetext\n➭ #plastic3d\n➭ #dropwater3d\n➭ #avengerslogo3d\n➭ #harrypoter\n➭ #brokenglass\n➭ #wonderfulgravity3d\n➭ #futuristicneon3d\n➭ #skytext3d\n➭ #robotr2\n➭ #natal3d\n➭ #matrixstyle\n➭ #waterpiperariel\n➭ #blackpink\n➭ #lightglow\n➭ #glass\n➭ #hoorror_blood\n➭ #sand\n➭ #sketch\n➭ #magma\n➭ #batman\n➭ #demon\n➭ #sci_fi\n➭ #ice\n➭ #sea_metal\n➭ #skeleton\n➭ #transformer\n➭ #warning\n➭ #denim', { quoted : m } )
+  	m.reply(from, '𖣘 *𝕋𝔼𝕏𝕋ℙℝ𝕆 - 𝕄𝔼ℕ𝕌*\n\n➥ #arielpetir\n➥ #arielpetir2\n➥ #bussines3d\n➥ #stoneariel3d\n➥ #neon3dariel\n➥ #neon\n➥ #impresiveariel\n➥ #neondevil3dariel\n➥ #underwater3d\n➥ #bears3dariel\n➥ #grafityariel3d\n➥ #metaldarkariel\n➥ #halloweenariel\n➥ #captainamerikabyariel\n➥ #spacetext\n➥ #plastic3d\n➥ #dropwater3d\n➥ #avengerslogo3d\n➥ #harrypoter\n➥ #brokenglass\n➥ #wonderfulgravity3d\n➥ #futuristicneon3d\n➥ #skytext3d\n➥ #robotr2\n➥ #natal3d\n➥ #matrixstyle\n➥ #waterpiperariel\n➥ #blackpink\n➥ #lightglow\n➥ #glass\n➥ #hoorror_blood\n➥ #sand\n➥ #sketch\n➥ #magma\n➥ #batman\n➥ #demon\n➥ #sci_fi\n➥ #ice\n➥ #sea_metal\n➥ #skeleton\n➥ #transformer\n➥ #warning\n➥ #denim', { quoted : m } )
 }
 break
 case 'infomenu':{
@@ -2374,12 +2397,12 @@ case 'infomenu':{
                 }
             }
             break
-case 'googlemenu':{
-	m.reply(from, '✘ *G O O G L E - M E N U*\n\n➭ #detiknews\n➭ #wiki\n➭ #google\n➭ #gempa\n➭ #playstore\n➭ #brainly\n➭ #lirik\n➭ #jadwaltv\n➭ #covidindo\n➭ #pinterest\n➭ #webtoon\n➭ #anime\n➭ #wallpaperaccess', { quoted : m } )
+case 'internetmenu':{
+	m.reply(from, '𖣘 *𝕀ℕ𝕋𝔼ℝℕ𝔼𝕋 - 𝕄𝔼ℕ𝕌*\n\n➥ #detiknews\n➥ #wiki\n➥ #google\n➥ #gempa\n➥ #playstore\n➥ #brainly\n➥ #lirik\n➥ #jadwaltv\n➥ #covidindo\n➥ #pinterest\n➥ #webtoon\n➥ #anime\n➥ #wallpaperaccess', { quoted : m } )
 }
 break
 case 'randommenu':{
-	m.reply(from, '✘ *R A N D O M - M E N U*\n\n➭ #waifu\n➭ #simi\n➭ #awoo\n➭ #shinobu\n➭ #neko\n➭ #megumin\n➭ #couple\n➭ #aesthetic\n➭ #artinama\n➭ #storywa\n➭ #asupan\n➭ #moodbooster', { quoted : m } )
+	m.reply(from, '𖣘 *ℝ𝔸ℕ𝔻𝕆𝕄 - 𝕄𝔼ℕ𝕌*\n\n➥ #waifu\n➥ #simi\n➥ #awoo\n➥ #shinobu\n➥ #neko\n➥ #megumin\n➥ #couple\n➥ #aesthetic\n➥ #artinama\n➥ #storywa\n➥ #asupan\n➥ #moodbooster', { quoted : m } )
 }
 break
 case 'soundmenu':{
@@ -2400,17 +2423,13 @@ case 'kisahmenu':{
             break
 case 'virtexmenu':{
 	{
-                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "☢️ Virtex Ringan [ 1 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/8b99ugzkabs7etu/virtex+1.txt/file", description: "Virtex Ringan"},{title: "☢️ Virtex Ganas [ 2 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/et2bqmno68hnbkk/virtex.txt/file", description: "Virtex Ganas"},{title: "☢️ Virtex Ganas [ 3 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/blt8jxo1bqauj5k/virtex2.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 4 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/e5gm8e6fdye8eor/virtex+3.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 5 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/wnmj3or2avpkojq/virtex+4.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 6 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/svuztzb9vo9wtfj/virtex+5.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 7 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/xgstx9zc9uls4z8/virtex+6.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 8 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/ldh1qmt50b657vr/virtex+7.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Quick Edit", rowId: "#mediafire https://www.mediafire.com/file/b3hrtsowsw2jijx/Untuk-Virtex.apk/file", description: "Untuk Membuka File Virtex"}, ]}    ]
+                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "☢️ Virtex Ringan [ 1 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/8b99ugzkabs7etu/virtex+1.txt/file", description: "Virtex Ringan"},{title: "☢️ Virtex Ganas [ 2 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/et2bqmno68hnbkk/virtex.txt/file", description: "Virtex Ganas"},{title: "☢️ Virtex Ganas [ 3 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/blt8jxo1bqauj5k/virtex2.txt/file", description: "𝐅𝐢𝐤??𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 4 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/e5gm8e6fdye8eor/virtex+3.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 5 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/wnmj3or2avpkojq/virtex+4.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 6 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/svuztzb9vo9wtfj/virtex+5.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 7 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/xgstx9zc9uls4z8/virtex+6.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Virtex Ganas [ 8 ]", rowId: "#virtexarielsp https://www.mediafire.com/file/ldh1qmt50b657vr/virtex+7.txt/file", description: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀"},{title: "☢️ Quick Edit", rowId: "#mediafire https://www.mediafire.com/file/b3hrtsowsw2jijx/Untuk-Virtex.apk/file", description: "Untuk Membuka File Virtex"}, ]}    ]
                 let listMessage = {footer: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀",text: `Selamat Datang Di Menu Virtex`, buttonText: "Klick Ini Kak",sections}
                 let sendm =  sock.sendMessage( from, listMessage, {quoted :m })
                 let arielsp = sock.sendMessage(from, { audio: {url : './Ariel-SP_Ganteng/virtexx.mp3'}, mimetype: 'audio/mp4'}, {quoted: m})
                 }
             }
             break
-case 'animemenu':{
-	m.reply(from, '✘ *A N I M E - M E N U*\n\n➭ #chara\n➭ #manga\n➭ #otakudesu', { quoted : m } )
-}
-break
 case 'virtexarielsp':
 if (q.includes('--help')) return reply(examlink) 
 if (args.length < 1) return reply('Mana Link Nya Ngab')
@@ -2430,11 +2449,11 @@ const ariell2 = await mediafireDl(ariell1)
 sock.sendMessage(from, { document : { url : ariell2[0].link}, fileName : ariell2[0].nama, mimetype: ariell2[0].mime }, { quoted : m }) 
 break
 case 'toolsmenu':{
-	m.reply(from, '✘ *T O O L S - M E N U*\n\n➭ #tinyurl\n➭ #cuttly\n➭ #ceklokasi', { quoted : m } )
+	m.reply(from, '𖣘 *𝕋𝕆𝕆𝕃𝕊 - 𝕄𝔼ℕ𝕌*\n\n➥ #tinyurl\n➥ #cuttly\n➥ #ceklokasi', { quoted : m } )
 }
 break
-case 'mtkmenu':{
-	m.reply(from, '✘ *M T K - M E N U*\n\n➭ #luas-segitiga\n➭ #kel-segitiga\n➭ #luas-persegi\n➭ #kel-persegi\n➭ #kuadrat\n➭ #kubik', { quoted : m } )
+case 'rumusmenu':{
+	m.reply(from, '𖣘 *ℝ𝕌𝕄𝕌𝕊 - 𝕄𝔼ℕ𝕌*\n\n➥ #luas-segitiga\n➥ #kel-segitiga\n➥ #luas-persegi\n➥ #kel-persegi\n➥ #kuadrat\n➥ #kubik', { quoted : m } )
 }
 break
 case 'gamemenu':{
@@ -2789,27 +2808,6 @@ const result = anu[Math.floor(Math.random(), anu.length)]
 sock.sendMessage(from, { image: { url: result }, caption: '▹ Media Url : '+result }, { quoted: m })
             }
             break
-  case 'antilink':
-if (q.includes('--help')) return reply(`*Example* : ${prefix+order}off/on`) 
-if (!isGroup) return reply('*Perintah ini khusus Grup*!')
-if (!isGroupAdmins) return reply('*Khusus Admin*!') 
-if (!isBotGroupAdmins) return reply('*Bot bukan Admin*') 
-if (q === 'on') {
-if (isAntiLink) return reply('Sudah Aktif Kak')
-antilink.push(m.sender)
-fs.writeFileSync('./storage/user/antilink.json', JSON.stringify(antilink))
-reply('Sukses mengaktifkan fitur antilink')
-sock.sendMessage(from,  {text: `ALLERT!!! Group ini sudah di pasang anti link\nJika Kamu Melanggar Maka Akan Saya Tendang`})
-} else if (q === 'off') {
-if (!isAntiLink) return reply('Sudah Mati Kak')
-var ini = antilink.indexOf(m.sender)
-antilink.splice(ini, 1)
-fs.writeFileSync('./storage/user/antilink.json', JSON.stringify(antilink))
-reply('Sukses menonaktifkan fitur antilink')
-} else if (!q){
- reply(`Pilih Antilink On / Off `)
-}
-break 	
   case 'promote':{
 if (q.includes('--help')) return reply(examtag) 
    if (!isGroup) return reply('*Perintah ini khusus Grup*!')
@@ -3256,8 +3254,8 @@ if (q.includes('--help')) return reply(examkosong)
    let buttonss = [{
      index: 1, 
       urlButton: {
-       displayText: '𝐈𝐍𝐒𝐓𝐀𝐆𝐑𝐀𝐌', 
-       url: 'https://instagram.com/sainnnaaaaii16?igshid=YmMyMTA2M2Y='
+       displayText: '𝐊𝐈𝐑𝐈𝐌 𝐏𝐄𝐒𝐀𝐍 𝐊𝐄 𝐎𝐖𝐍𝐄𝐑', 
+       url: 'https://secreto.site/a6tla5'
        } 
      },     
      {
@@ -3292,11 +3290,11 @@ if (q.includes('--help')) return reply(examkosong)
     await m.sendButton(
     from, 
     MenuList,
-    `Jika Kamu bingung dengan command berikut\nbisa tambahkan --help untuk melihat bantuan\n𝗘𝘅𝗮𝗺𝗽𝗹𝗲 : #sticker --help`, 
+    `Jika kamu bingung silahkan chat owner\nBot masih dalam pengembangan, Jika ada error ya maklumin aja tod`, 
     buttonss, 
     thumb, 
     await m.createMsg(
-     from, 
+     from,
      {
      image: {
       url: './storage/image/ArielGantengBangetWowOmaygatEpribadihTeetewtwtetwArielSPnihbostengtengteng.jpg', 
