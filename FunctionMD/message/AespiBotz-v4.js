@@ -1058,244 +1058,33 @@ Klik APi untuk memulai obrolan`
 }         
              break
 
- case 'tebakkabupaten':{
- if (_tebakkabupaten.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung") 
-  reply(`*Loading....⌛*`)
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta = tebakkabupaten
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.title
-   let gambar = data.url
-   let teks = `*TEBAK KABUPATEN*\n\nApa nama kabupaten dari lambang tersebut!\nWaktu : ${waktu}s`
-   _tebakkabupaten[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/tebakkabupaten.json", JSON.stringify(_tebakkabupaten))
-  sock.sendMessage(from, { image: { url: gambar }, caption: teks }, { quoted: m })
-   await sleep(_tebakkabupaten[m.sender.split('@')[0]].time)
-   if (_tebakkabupaten.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _tebakkabupaten[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/tebakkabupaten.json", JSON.stringify(_tebakkabupaten))
- 
-    }
- }
- break
- case 'tebakanime':{
- if (_tebakanime.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-  reply(`*Loading....⌛*`)
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta = tebakanime
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.jawaban
-   let gambar = data.image
-   let japan = data.name_jp
-   let teks = `*TEBAK ANIME*\n\nSiapa nama Karakter pada gambar tersebut!\n${japan}\nWaktu : ${waktu}s`
-   _tebakanime[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/tebakanime.json", JSON.stringify(_tebakanime))
-  sock.sendMessage(from, { image: { url: gambar }, caption: teks }, { quoted: m })
-   await sleep(_tebakanime[m.sender.split('@')[0]].time)
-   if (_tebakanime.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _tebakanime[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/tebakanime.json", JSON.stringify(_tebakanime))
- 
-    }
- }
- break
- case 'tebakbendera':{
- if (_tebakbendera.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-  reply(`*Loading....⌛*`)
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   /*
-   / 1000 = 1 detik
-   / 60000 = 1 menit
-   >_tebakbendera
-   */
-   let datta = tebakbendera
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.name
-   let gambar = data.img
-   let teks = `*TEBAK BENDERA*\n\nApa nama bendera pada gambar tersebut!\nWaktu : ${waktu}s`
-   _tebakbendera[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/tebakbendera.json", JSON.stringify(_tebakbendera))
-  sock.sendMessage(from, { image: { url: gambar }, caption: teks }, { quoted: m })
-   await sleep(_tebakbendera[m.sender.split('@')[0]].time)
-   if (_tebakbendera.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _tebakbendera[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/tebakbendera.json", JSON.stringify(_tebakbendera))
- 
-    }
- }
- break
-case 'caklontong':{
- if (_caklontong.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta = caklontong
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.jawaban
-   let soal = data.soal
-   let desk = data.deskripsi
-   let teks = `𝗖𝗔𝗞 𝗟𝗢𝗡𝗧𝗢𝗡𝗚\n\n*Soal :* ${soal}\n\nWaktu : ${waktu}s`
-   _caklontong[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/caklontong.json", JSON.stringify(_caklontong))
-  sock.sendMessage(from, { text : teks}, { quoted: m })
-   await sleep(_caklontong[m.sender.split('@')[0]].time)
-   if (_caklontong.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: `${jawaban}\n\n${desk}`, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _caklontong[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/caklontong.json", JSON.stringify(_caklontong))
- 
-    }
- }
- break
-case 'tebaklagu':{
- if (_tebaklagu.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta =  tebaklagu
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.title
-   let soal = data.artists
-   let songs = data.songs
-   let teks = `𝗧𝗘𝗕𝗔𝗞 𝗟𝗔𝗚𝗨\n_Apa Nama Judulnya_\n*Artist:* ${soal}\n\nWaktu : ${waktu}s`
-   _tebaklagu[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/tebaklagu.json", JSON.stringify(_tebaklagu))
-sock.sendMessage(from, { text : teks}, { quoted: m })
-await sock.sendMessage(from, { audio: {url : songs }, mimetype: 'audio/mp4', ptt: true}, {quoted: m})
-  await sleep(_tebaklagu[m.sender.split('@')[0]].time)
-   if (_tebaklagu.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _tebaklagu[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/tebaklagu.json", JSON.stringify(_tebaklagu))
- 
-    }
- }
- break
-case 'tebaklirik':{
- if (_tebaklirik.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta =  tebaklirik
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.jawaban
-   let soal = data.soal
-   let teks = `𝗧𝗘𝗕𝗔𝗞 𝗟𝗜𝗥𝗜𝗞\n\n*Soal :* ${soal}\n\nWaktu : ${waktu}s`
-   _tebaklirik[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/tebaklirik.json", JSON.stringify(_tebaklirik))
-  sock.sendMessage(from, { text : teks}, { quoted: m })
-   await sleep(_tebaklirik[m.sender.split('@')[0]].time)
-   if (_tebaklirik.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _tebaklirik[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/tebaklirik.json", JSON.stringify(_tebaklirik))
- 
-    }
- }
- break
-case 'tekateki':{
- if (_tekateki.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta = tekateki
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.jawaban
-   let soal = data.soal
-   let teks = `𝗧𝗘𝗞𝗔 𝗧𝗘𝗞𝗜;\n\n*Soal :* ${soal}\n\nWaktu : ${waktu}s`
-   _tekateki[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/tekateki.json", JSON.stringify(_tekateki))
-  sock.sendMessage(from, { text : teks}, { quoted: m })
-   await sleep(_tekateki[m.sender.split('@')[0]].time)
-   if (_tekateki.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _tekateki[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/tekateki.json", JSON.stringify(_tekateki))
- 
-    }
- }
- break
-case 'tebakkalimat':{
- if (_tebakkalimat.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta = tebakkalimat
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.jawaban
-   let soal = data.soal
-   let teks = `𝗧𝗘𝗕𝗔𝗞 𝗞𝗔𝗟𝗜𝗠𝗔𝗧;\n\n*Soal :* ${soal}\n\nWaktu : ${waktu}s`
-   _tebakkalimat[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/tebakkalimat.json", JSON.stringify(_tebakkalimat))
-  sock.sendMessage(from, { text : teks}, { quoted: m })
-   await sleep(_tebakkalimat[m.sender.split('@')[0]].time)
-   if (_tebakkalimat.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _tebakkalimat[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/tebakkalimat.json", JSON.stringify(_tebakkalimat))
- 
-    }
- }
- break
-case 'susunkata':{
- if (_susunkata.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta = susunkata
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.jawaban
-   let soal = data.soal
-   let tipe = data.tipe
-   let teks = `𝗦𝗨𝗦𝗨𝗡 𝗞𝗔𝗧𝗔;\n\n*Soal :* ${soal}\n*Tipe :* ${tipe}\n\nWaktu : ${waktu}s`
-   _susunkata[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/susunkata.json", JSON.stringify(_susunkata))
-  sock.sendMessage(from, { text : teks}, { quoted: m })
-   await sleep(_susunkata[m.sender.split('@')[0]].time)
-   if (_susunkata.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _susunkata[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/susunkata.json", JSON.stringify(_susunkata))
- 
-    }
- }
- break
+ case 'tebakkabupaten':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
+ case 'tebakanime':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
+ case 'tebakbendera':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
+case 'caklontong':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
+case 'tebaklagu':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
+case 'tebaklirik':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
+case 'tekateki':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
+case 'tebakkalimat':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
+case 'susunkata':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
  case 'antilink': 
 if (!isGroup) return reply('*Khusus Grup*')
 if (!isGroupAdmins && !isOwner) return reply('*Khusus Owner*')
@@ -1322,56 +1111,12 @@ headerType: 1
 await sock.sendMessage(from, btngrass, MessageType.buttonsMessage, {quoted: m})
 }
 break
-case 'asahotak':{
- if (_asahotak.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta = asahotak
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.jawaban
-   let soal = data.soal
-   let teks = `𝗔𝗦𝗔𝗛 𝗢𝗧𝗔𝗞\n\n*Soal :* ${soal}adalah\n\nWaktu : ${waktu}s`
-   _asahotak[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/asahotak.json", JSON.stringify(_asahotak))
-  sock.sendMessage(from, { text : teks}, { quoted: m })
-   await sleep(_asahotak[m.sender.split('@')[0]].time)
-   if (_asahotak.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _asahotak[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/asahotak.json", JSON.stringify(_asahotak))
- 
-    }
- }
+case 'asahotak':
+reply('*Menu game sementara dihapus ngab aihihihi*')
  break
-case 'tebakkimia':{
- if (_tbkkimia.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   let upah = randomInt(500, 600)   
-   let waktu = 60000
-   let datta = tebakkimia
-   let jsonData = JSON.parse(datta);
-   let xm = Math.floor(Math.random() * jsonData.length);
-   let data = jsonData[xm];
-   console.log(data)//hasil di tampilkan di cmd
-   let jawaban = data.lambang
-   let unsur = data.unsur
-   let teks = `𝗧𝗘𝗕𝗔𝗞 𝗞𝗜𝗠𝗜𝗔\n\nLambang unsur dari ${unsur} adalah\nWaktu : ${waktu}s`
-   _tbkkimia[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: waktu, monay: upah }  
-  fs.writeFileSync("./storage/user/tebakkimia.json", JSON.stringify(_tbkkimia))
-  sock.sendMessage(from, { text : teks}, { quoted: m })
-   await sleep(_tbkkimia[m.sender.split('@')[0]].time)
-   if (_tbkkimia.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _tbkkimia[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/tebakkimia.json", JSON.stringify(_tbkkimia))
- 
-    }
- }
- break
+case 'tebakkimia':
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break
   case 'blackpink':{
 if (q.includes('--help')) return reply(examquery) 
     if (args.length < 1) return m.reply(from, 'Teks Nya Mana? Contoh : Titit Kambing', { quoted : m } )
@@ -1394,153 +1139,8 @@ const reset = []
      reply('Success!')
 break
 case 'kuismath':
-case 'math':{
-    if (_math.hasOwnProperty(m.sender.split('@')[0])) return reply("Masih ada permainan yang sedang berlangsung")
-   
-     let operators = {
-      '+': '+',
-      '-': '-',
-      '*': '×'
-     }  
-  if (!args[0]) return reply("Mode : \nnoob | easy | medium | hard | extreme | deathzone")
-  let mode = args[0]   
-  if (args[0] === "noob"){
-  let a = randomInt(-5, 5)
-  let b = randomInt(10, 1)
-  let op = pickRandom(['+', '-'])
-  let up = `${a} ${operators[op]} ${b}` 
-  let result = (new Function(`return ${a} ${op.replace('/', '*')} ${b < 0 ? `(${b})` : b}`))()  
-  let jawaban = `${result}`
-  _math[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: 60000, monay: 500 }  
-  fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
-  console.log(jawaban)
-  reply(`berapa hasil dari ${up}, waktu 60 detik!`)    
-  await sleep(_math[m.sender.split('@')[0]].time)
-   if (_math.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _math[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
- 
-    }
-  } else if (args[0] === "easy"){
-  let a = randomInt(-9, 9)
-  let b = randomInt(99, 9)
-  let op = pickRandom(['+', '-'])
-  let up = `${a} ${operators[op]} ${b}` 
-  let result = (new Function(`return ${a} ${op} ${b < 0 ? `(${b})` : b}`))()  
-  let jawaban = `${result}`
-  _math[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: 60000, monay: 1500 }  
-  fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
-  console.log(jawaban)
-  reply(`berapa hasil dari ${up}, waktu 60 detik!`)
-  await sleep(_math[m.sender.split('@')[0]].time)
-   if (_math.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _math[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
- 
-    }
-  } else if (args[0] === "medium"){
-  let a = randomInt(-99, 9)
-  let b = randomInt(999, -99)
-  let op = pickRandom(['*', '+', '-'])
-  let up = `${a} ${operators[op]} ${b}` 
-  let result = (new Function(`return ${a} ${op} ${b < 0 ? `(${b})` : b}`))()  
-  let jawaban = `${result}`
-  _math[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: 60000, monay: 3500 }  
-  fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
-  console.log(jawaban)
-  reply(`berapa hasil dari ${up}, waktu 60 detik!`)
-  await sleep(_math[m.sender.split('@')[0]].time)
-   if (_math.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _math[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
- 
-    }
-  } else if (args[0] === "hard"){
-  let a = randomInt(-999, 99)
-  let b = randomInt(9999, -999)
-  let op = pickRandom(['*', '+', '-'])
-  let up = `${a} ${operators[op]} ${b}` 
-  let result = (new Function(`return ${a} ${op} ${b < 0 ? `(${b})` : b}`))()  
-  let jawaban = `${result}`
-  _math[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: 60000, monay: 5000 }  
-  fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
-  console.log(jawaban)
-  reply(`berapa hasil dari ${up}, waktu 60 detik!`)
-  await sleep(_math[m.sender.split('@')[0]].time)
-   if (_math.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m })  
-      delete _math[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
- 
-    }
-  } else if (args[0] === "extreme"){
-  let a = randomInt(-999, 99)
-  let b = randomInt(999999, -99999)
-  let op = pickRandom(['*', '+', '-'])
-  let up = `${a} ${operators[op]} ${b}` 
-  let result = (new Function(`return ${a} ${op} ${b < 0 ? `(${b})` : b}`))()  
-  let jawaban = `${result}`
-  _math[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: 60000, monay: 10000 }  
-  fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
-  console.log(jawaban)
-  reply(`berapa hasil dari ${up}, waktu 60 detik!`)
-  await sleep(_math[m.sender.split('@')[0]].time)
-   if (_math.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _math[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
- 
-    }
-  } else if (args[0] === "veryextreme"){
-  let a = randomInt(-9999, 999)
-  let b = randomInt(99999999, -99999)
-  let op = pickRandom(['*', '+', '-'])
-  let up = `${a} ${operators[op]} ${b}` 
-  let result = (new Function(`return ${a} ${op} ${b < 0 ? `(${b})` : b}`))()  
-  let jawaban = `${result}`
-  _math[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: 60000, monay: 25000 }  
-  fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
-  console.log(jawaban)
-  reply(`berapa hasil dari ${up}, waktu 60 detik!`)
-  await sleep(_math[m.sender.split('@')[0]].time)
-   if (_math.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _math[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
- 
-    }
-  } else if (args[0] === "deathzone"){
-  let a = randomInt(-99999, 9999)
-  let b = randomInt(9999999999, -9999999)
-  let op = pickRandom(['*', '+', '-'])
-  let up = `${a} ${operators[op]} ${b}` 
-  let result = (new Function(`return ${a} ${op} ${b < 0 ? `(${b})` : b}`))()  
-  let jawaban = `${result}`
-  _math[m.sender.split('@')[0]] = { user: m.sender, jawaban: jawaban.toLowerCase(), time: 60000, monay: 35000 }  
-  fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
-  console.log(jawaban)
-  reply(`berapa hasil dari ${up}, waktu 60 detik!`)
-  await sleep(_math[m.sender.split('@')[0]].time)
-   if (_math.hasOwnProperty(m.sender.split('@')[0])) {
-      sock.sendMessage(from, { text: jawaban, mentions: [m.sender] },
-{ quoted : m }) 
-      delete _math[m.sender.split('@')[0]]
-      fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
- 
-    }
-  } else reply('Mode itu tidak ada jancuk!')
-  
-  } 
-  break
+reply('*Menu game sementara dihapus ngab aihihihi*')
+break    
 case 'webtonsearch': case 'webtoon':
 if (!q) return reply('Nyari apa')
 await reply('Wait')
@@ -1945,19 +1545,7 @@ break
 break
 
 case 'tebakgambar':
-if (q.includes('--help')) return reply(examkosong) 
-if (isPlayGame(from, tebakgambar)) return reply(`Masih ada game yang belum diselesaikan`)
-     reply(`*Loading....⌛*`)
-kotz.tebakgambar().then( data => {
-const data2 = data[0]
-data2.jawaban = data2.jawaban.split('Jawaban ').join('')
-var teks = `*TEBAK GAMBAR*\n\nPetunjuk : ${data2.jawaban.replace(/[b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|y|z]/gi, '_')}\nWaktu : ${gamewaktu}s`
-sock.sendMessage(from, { image: { url: data2.image }, caption: teks }, { quoted: m })
-.then( res => {
-var jawab = data2.jawaban.toLowerCase()
-addPlayGame(from, 'Tebak Gambar', jawab, gamewaktu, res, tebakgambar)
-})
-})
+reply('*Menu game sementara dihapus ngab aihihihi*')
 break
 case 'google': {
 if (q.includes('--help')) return reply(examquery) 
@@ -3255,7 +2843,7 @@ if (q.includes('--help')) return reply(examkosong)
      index: 1, 
       urlButton: {
        displayText: '𝐊𝐈𝐑𝐈𝐌 𝐏𝐄𝐒𝐀𝐍 𝐊𝐄 𝐎𝐖𝐍𝐄𝐑', 
-       url: 'https://secreto.site/a6tla5'
+       url: 'http://wa.me/6282245799282?text=Halo+Kakak+Owner'
        } 
      },     
      {
