@@ -103,36 +103,10 @@ const timeMak = moment().tz('Asia/Makassar').format("HH:mm:ss");
 const timeJay = moment().tz('Asia/Jayapura').format("HH:mm:ss");
  const { pinterest, wallpaper, porno, hentai, quotesAnime } = require('../scrape/ApiOrScrap')
  const { addPlayGame, getJawabanGame, isPlayGame, cekWaktuGame, getGamePosi } = require("../../storage/user/game");
- const tebakkimia = fs.readFileSync('./FunctionMD/scrape/Result/Game/tebakkimia.json');
- const asahotak = fs.readFileSync('./FunctionMD/scrape/Result/Game/asahotak.json');
- const susunkata = fs.readFileSync('./FunctionMD/scrape/Result/Game/susunkata.json');
- const tebakkalimat = fs.readFileSync('./FunctionMD/scrape/Result/Game/tebakkalimat.json');
- const tekateki = fs.readFileSync('./FunctionMD/scrape/Result/Game/tekateki.json');
- const caklontong = fs.readFileSync('./FunctionMD/scrape/Result/Game/caklontong.json');
- const tebakbendera = fs.readFileSync('./FunctionMD/scrape/Result/Game/tebakbendera.json');
- const tebakanime = fs.readFileSync('./FunctionMD/scrape/Result/Game/tebakanime.json');
- const tebakkabupaten = fs.readFileSync('./FunctionMD/scrape/Result/Game/tebakkabupaten.json');
- const tebaklagu = fs.readFileSync('./FunctionMD/scrape/Result/Game/tebaklagu.json');
- const tebaklirik = fs.readFileSync('./FunctionMD/scrape/Result/Game/tebaklirik.json');
  const { Gempa } = require("../scrape/gempa.js");
  let { covid } = require('../scrape/covid.js') 
 const { jadwaltv }= require('../scrape/jadwaltv');
 const { lirikLagu } = require('../scrape/lirik')
-
-const _math = JSON.parse(fs.readFileSync('./storage/user/math.json'))
-const _tbkkimia = JSON.parse(fs.readFileSync('./storage/user/tebakkimia.json'))
-const _asahotak = JSON.parse(fs.readFileSync('./storage/user/asahotak.json'))
-const _susunkata = JSON.parse(fs.readFileSync('./storage/user/susunkata.json'))
-const _tebakkalimat = JSON.parse(fs.readFileSync('./storage/user/tebakkalimat.json'))
-const _tekateki = JSON.parse(fs.readFileSync('./storage/user/tekateki.json'))
-const _caklontong = JSON.parse(fs.readFileSync('./storage/user/caklontong.json'))
-const _tebakbendera = JSON.parse(fs.readFileSync('./storage/user/tebakbendera.json'))
-const _tebakanime = JSON.parse(fs.readFileSync('./storage/user/tebakanime.json'))
-const _tebakkabupaten = JSON.parse(fs.readFileSync('./storage/user/tebakkabupaten.json'))
-const _tebaklirik= JSON.parse(fs.readFileSync('./storage/user/tebaklirik.json'))
-const _tebaklagu= JSON.parse(fs.readFileSync('./storage/user/tebaklagu.json'))
-let tebakgambar = []
-let gamewaktu = 50
  
  let OwnerNumber = Options.info.owner 
 module.exports = async (
@@ -153,6 +127,13 @@ module.exports = async (
    const args = ordermessage.trim().split(/ +/).slice(1)
    const messagesD = chats.slice(0).trim().split(/ +/).shift().toLowerCase()
    const botNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net'
+   
+//KONTOL
+global.db = JSON.parse(fs.readFileSync('./Ariel-SP_Ganteng/user.json'))
+if (global.db) global.db = {
+    users: {},
+    ...(global.db || {})
+}
    
 //══════════[ WAKTU ]══════════//
 
@@ -565,7 +546,7 @@ await sock.setStatus(`ACTIVE DURING : ${runtime(process.uptime())} TYPE ${prefix
    }
    
    if (afk.checkAfkUser(m.sender, _afk) && !isCmd) {
-    const pep = `*@${m.sender.split("@")[0]}* telah kembali dari AFK!\n\n*Selama* : ${clockString(new Date - afk.getAfkTimede,(m.sender, _afk))}`
+    const pep = `*@${m.sender.split("@")[0]}* telah kembali dari AFK!\n\n*Selama* : ${clockString(new Date - afk.getAfkTime(m.sender, _afk))}`
     reply(pep)
     _afk.splice(afk.getAfkPosition(m.sender, _afk), 1)
     fs.writeFileSync('./storage/user/afk.json', JSON.stringify(_afk))
@@ -681,194 +662,6 @@ let isUser = cekUser(sender)
    const isInventoryLimit = cekDuluJoinAdaApaKagaLimitnyaDiJson(m.sender)
    const isInventoryMonay = cekDuluJoinAdaApaKagaMonaynyaDiJson(m.sender)
    const ikan = ['🐟','🐠','🐡']     
- // Game
-cekWaktuGame(sock, tebakgambar)
-if (isPlayGame(from, tebakgambar)) {
-if (chats.toLowerCase() == getJawabanGame(from, tebakgambar)) {
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-var htgm = randomNomor(100, 150)
-addMonay(m.sender, htgm)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${htgm} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-tebakgambar.splice(getGamePosi(from, tebakgambar), 1)
-}
-}
-if (_math.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _math[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_math[m.sender.split('@')[0]].user, _math[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_math[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _math[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/math.json", JSON.stringify(_math))
-} else {
-reply("Jawaban Salah Kak!")
-}
-} 
-if (_tbkkimia.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _tbkkimia[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_tbkkimia[m.sender.split('@')[0]].user, _tbkkimia[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tbkkimia[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _tbkkimia[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/tebakkimia.json", JSON.stringify(_tbkkimia))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_asahotak.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _asahotak[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_asahotak[m.sender.split('@')[0]].user, _asahotak[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_asahotak[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _asahotak[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/asahotak.json", JSON.stringify(_asahotak))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_susunkata.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _susunkata[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_susunkata[m.sender.split('@')[0]].user, _susunkata[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_susunkata[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _susunkata[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/susunkata.json", JSON.stringify(_susunkata))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_tebakkalimat.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _tebakkalimat[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_tebakkalimat[m.sender.split('@')[0]].user, _tebakkalimat[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tebakkalimat[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _tebakkalimat[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/tebakkalimat.json", JSON.stringify(_tebakkalimat))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_tekateki.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _tekateki[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_tekateki[m.sender.split('@')[0]].user, _tekateki[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tekateki[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _tekateki[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/tekateki.json", JSON.stringify(_tekateki))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_caklontong.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _caklontong[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_caklontong[m.sender.split('@')[0]].user, _caklontong[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_caklontong[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _caklontong[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/caklontong.json", JSON.stringify(_caklontong))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_tebakbendera.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _tebakbendera[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_tebakbendera[m.sender.split('@')[0]].user, _tebakbendera[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {
-text: "Dixie Game",
-footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tebakbendera[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, 
-title: "List Game",
-buttonText: "Play Again",
-sections
-}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _tebakbendera[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/tebakbendera.json", JSON.stringify(_tebakbendera))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_tebakanime.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _tebakanime[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_tebakanime[m.sender.split('@')[0]].user, _tebakanime[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tebakanime[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections
-   }
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _tebakanime[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/tebakanime.json", JSON.stringify(_tebakanime))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_tebakkabupaten.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _tebakkabupaten[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_tebakkabupaten[m.sender.split('@')[0]].user, _tebakkabupaten[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tebakkabupaten[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _tebakkabupaten[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/tebakkabupaten.json", JSON.stringify(_tebakkabupaten))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_tebaklirik.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _tebaklirik[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_tebaklirik[m.sender.split('@')[0]].user, _tebaklirik[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tebaklirik[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _tebaklirik[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/tebaklirik.json", JSON.stringify(_tebaklirik))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
-if (_tebaklagu.hasOwnProperty(m.sender.split('@')[0]) && !isCmd && !m.key.fromMe) {
-let jawaban = _tebaklagu[m.sender.split('@')[0]].jawaban
-if (!isInventoryMonay){ addInventoriMonay(m.sender) }
-if (chatmessage.toLowerCase() == jawaban) {
-addMonay(_tebaklagu[m.sender.split('@')[0]].user, _tebaklagu[m.sender.split('@')[0]].monay)
-const sections = [ { title: "Game", rows: [ { title: "Kuis Math", rowId: "#math", description: "Kuis Matematika"},{title: "Tebak Gambar", rowId: "#tebakgambar", description: "Game Tebak Gambar"},{title: "Tebak Kimia", rowId: "#tebakkimia", description: "Game Tebak Kimia"},{title: "Asah Otak", rowId: "#asahotak", description: "Game Asahotak"}, {title: "Susun Kata", rowId: "#susunkata", description: "Game Susunkata"},{title: "Tebak Kalimat", rowId: "#tebakkalimat", description: "Game Tebak Kalimat"}, {title: "Teka Teki", rowId: "#tekateki", description: "Teka Teki"},{title: "Cak Lontong", rowId: "#caklontong", description: "Game Cak Lontong"}, { title: "Tebak Anime", rowId: "#tebakanime", description: "Game Tebak Anime"}, {title: "Tebak Kabupaten", rowId: "#tebakkabupaten", description: "Game Tebak Kabupaten"}, {title: "Tebak Bendera", rowId: "#tebakbendera", description: "Game Tebak Bendera"}, {title: "Tebak Lagu", rowId: "#tebaklagu", description: "Game Tebak Lagu"}, {title: "Tebak Lirik", rowId: "#tebaklirik", description: "Game Tebak Lirik"}, ]}    ]
-const listMessage = {text: "Dixie Game",footer: `Selamat jawaban kamu benar🥳🎉\n\n[🎁]Kamu mendapatkan hadiah sebanyak ${_tebaklagu[m.sender.split('@')[0]].monay} monay\n\nTotal monay kamu: ${getMonay(m.sender)}`, title: "List Game",buttonText: "Play Again",sections}
-const sendm =  sock.sendMessage( from, listMessage, {quoted :m })
-delete _tebaklagu[m.sender.split('@')[0]]
-fs.writeFileSync("./storage/user/tebaklagu.json", JSON.stringify(_tebaklagu))
-} else {
-reply("Jawaban Salah Kak!")
-}
-}
   //Auto reset
   //Jika bot on di jam 24.00 maka limit dan darah bakal reset
   //Kalo off yaa kaga, Harus tunggu besok :v
@@ -1676,7 +1469,6 @@ const result2 = `*Judul :* ${res2[0].judul}\n*Wiki :* ${res2[0].wiki}`
 sock.sendMessage(from, { image : { url : res2[0].thumb }, caption : result2}) 
 break
 case 'asupan':
-reply(`*Loading....⌛*`)
 buffer = `https://zenzapis.xyz/randomasupan/asupantiktok?apikey=dc311285aa`
 sock.sendMessage(from, {video:{url:buffer}, caption:"Nih Ngab, awas kebablasan"}, {quoted:m})
 break
@@ -1757,7 +1549,7 @@ if (!isOwner) return reply('khusus owner')
 if (args.length < 1) return reply(`Masukkan isi pesannya`)
 const bc = store.chats.all()
 for (let i of bc) {
-sock.sendMessage(i.id, { text: `*[ PENGUMUMAN ]*\n\n${q}` })
+sock.sendMessage(i.id, { text: `*[ BROADCAST ]*\n\n${q}\n\n⫹⫺ 𝗗𝗮𝘁𝗲: ${tanggal}` })
 }
 break
 case 'couple': {
@@ -1931,7 +1723,7 @@ if (q.includes('--help')) return reply(examquery)
   break
   case 'arielsandypermana':{
  {
-                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "🌀 Semua Menu", rowId: "#menu2", description: "Menampilkan Semua Menu 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "👻 Group Menu", rowId: "#groupmenu", description: "Menampilkan Menu Group"},{title: "📢 Download Menu", rowId: "#downloadmenu", description: "Menampilkan Menu Download"},{title: "🌚 Convert Menu", rowId: "#convertmenu", description: "Menampilkan Menu Convert"},{title: "🔥Image Menu", rowId: "#imagemenu", description: "Menampilkan Image Menu"},{title: "🫂Fun Menu", rowId: "#funmenu", description: "Menampilkan Fun Menu"},{title: "📖 Textpro Menu", rowId: "#textpromenu", description: "Menampilkan Menu Textpro"},{title: "🗣️ Info Menu", rowId: "#infomenu", description: "Menampilkan Menu Informasi"},{title: "🍳 Google Menu", rowId: "#googlemenu", description: "Menampilkan Menu Google"},{title: "🤖 Random Menu", rowId: "#randommenu", description: "Menampilkan Menu Random"},{title: "🎧 Sound Menu", rowId: "#soundmenu", description: "Menampilkan Menu Musik"},{title: "📖 Kisah Menu", rowId: "#kisahmenu", description: "Menampilkan Menu Kisah Nabi"},{title: "👀 Wibu Menu", rowId: "#animemenu", description: "Menampilkan Menu Wibu"},{title: "⌨️ Tools Menu", rowId: "#toolsmenu", description: "Menampilkan Menu Tools"},{title: "🦃 MTK Menu", rowId: "#mtkmenu", description: "Menampilkan Menu MTK"},{title: "🎮 Game Menu", rowId: "#gamemenu", description: "Menampilkan Menu Game"},{title: "☢️ Virtex Menu", rowId: "#virtexmenu", description: "Anda Ingin War? Yuk Cobain Virtex 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "☠️ WA Imun Menu", rowId: "#wamenu", description: "WhatsApp Anti Virtex"}, ]}    ]
+                let sections = [ { title: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀", rows: [ { title: "🌀 Semua Menu", rowId: "#menu2", description: "Menampilkan Semua Menu 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "👻 Group Menu", rowId: "#groupmenu", description: "Menampilkan Menu Group"},{title: "📢 Download Menu", rowId: "#downloadmenu", description: "Menampilkan Menu Download"},{title: "🌚 Convert Menu", rowId: "#convertmenu", description: "Menampilkan Menu Convert"},{title: "🔥Image Menu", rowId: "#imagemenu", description: "Menampilkan Image Menu"},{title: "🫂Fun Menu", rowId: "#funmenu", description: "Menampilkan Fun Menu"},{title: "📖 Textpro Menu", rowId: "#textpromenu", description: "Menampilkan Menu Textpro"},{title: "🗣️ Info Menu", rowId: "#infomenu", description: "Menampilkan Menu Informasi"},{title: "🍳 Internet Menu", rowId: "#internetmenu", description: "Menampilkan Search Engine"},{title: "🤖 Random Menu", rowId: "#randommenu", description: "Menampilkan Menu Random"},{title: "🎧 Sound Menu", rowId: "#soundmenu", description: "Menampilkan Menu Musik"},{title: "📖 Kisah Menu", rowId: "#kisahmenu", description: "Menampilkan Menu Kisah Nabi"},{title: "👀 Wibu Menu", rowId: "#animemenu", description: "Menampilkan Menu Wibu"},{title: "⌨️ Tools Menu", rowId: "#toolsmenu", description: "Menampilkan Menu Tools"},{title: "🦃 MTK Menu", rowId: "#mtkmenu", description: "Menampilkan Menu MTK"},{title: "🎮 Game Menu", rowId: "#gamemenu", description: "Menampilkan Menu Game"},{title: "☢️ Virtex Menu", rowId: "#virtexmenu", description: "Anda Ingin War? Yuk Cobain Virtex 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭"},{title: "☠️ WA Imun Menu", rowId: "#wamenu", description: "WhatsApp Anti Virtex"}, ]}    ]
                 let listMessage = {footer: "𝐅𝐢𝐤𝐫𝐲𝐅𝐀",text: `*╭╮╱╭┳━━━┳╮╱╱╭━━━╮*\n*┃┃╱┃┃╭━╮┃┃╱╱┃╭━╮┃*\n*┃╰━╯┃┃╱┃┃┃╱╱┃┃╱┃┃*\n*┃╭━╮┃╰━╯┃┃╱╭┫┃╱┃┃*\n*┃┃╱┃┃╭━╮┃╰━╯┃╰━╯┃*\n*╰╯╱╰┻╯╱╰┻━━━┻━━━╯*\n\n\n*Halo Semuanya Saya 𝐃𝐢𝐱𝐢𝐞 𝐁𝐨𝐭 Siap Membantu Anda Kapanpun, Jika ada pertanyaan silahkan Hubungi Owner ya Kak*☺\n\n_*Note*: *Bot masih dalam pengembangan, mohon dimaklumi bila terjadi error*_\n\n*fyi ketik .menu2 untuk langsung ke daftar menu*`,buttonText: "LIST",sections}
                 let sendm =  sock.sendMessage( from, listMessage, {quoted :m })
                 }
@@ -2408,20 +2200,15 @@ if (q.includes('--help')) return reply(examtag)
    sock.groupParticipantsUpdate(from, mentionUser, "demote")
    }
   break
-  case 'add':{
-   if (!isGroup) return reply('*Perintah ini khusus Grup*!')
-   if (!isGroupAdmins && !isOwner) return reply('*Khusus Admin*!')
-   if (!isBotGroupAdmins) return reply('*Bot bukan Admin*')
-   if (args[1]){
-    let number = m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-    sock.groupParticipantsUpdate(from, [number], "add")
-   } 
-  else 
-   {
-    sock.groupParticipantsUpdate(from, mentionUser, "add")
-   }
-   }
-  break
+  case 'add': {
+if (q.includes('--help')) return reply(examkosong)
+if (!isGroup) return reply('*Khusus Group*')
+if (!isBotGroupAdmins) return reply('*Bot bukan Admin*')
+if (!isGroupAdmins && !isOwner) return reply('*Khusus Admib*')
+let users = m.quoted ? m.quoted.sender : q.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+await sock.groupParticipantsUpdate(from, [users], 'add')
+}
+break
   case 'kick':{
 if (q.includes('--help')) return reply(examtag) 
    if (!isGroup) return reply('*Perintah ini khusus Grup*!')
