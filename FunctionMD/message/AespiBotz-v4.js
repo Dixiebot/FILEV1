@@ -95,6 +95,7 @@ const ph = require('../scrape/photooxy.js')
  let _darahOrg = JSON.parse(fs.readFileSync('./storage/user/darah.json'))
  let _registered = JSON.parse(fs.readFileSync('./storage/user/registered.json'))
  let textproo = Options.textpro
+ let zenza = Options.zenza
  let thumb = fs.readFileSync('./storage/image/ArielGantengBangetWowOmaygatEpribadihTeetewtwtetwArielSPnihbostengtengteng.jpg') 
  const tanggal = moment.tz('Asia/Jakarta').format('dddd') + ', ' + moment.tz('Asia/Jakarta').format('LL')
 const time = moment().tz('Asia/Jakarta').format("HH:mm:ss")
@@ -150,6 +151,7 @@ module.exports = async (
    const ordermessage = (m.xtype === 'conversation') ? m.message.conversation : (m.xtype == 'imageMessage') ? m.message.imageMessage.caption : (m.xtype == 'videoMessage') ? m.message.videoMessage.caption : (m.xtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.xtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.xtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.xtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.xtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
    const chats = (m.xtype === 'conversation' && m.message.conversation) ? m.message.conversation : (m.xtype == 'imageMessage') && m.message.imageMessage.caption ? m.message.imageMessage.caption : (m.xtype == 'documentMessage') && m.message.documentMessage.caption ? m.message.documentMessage.caption : (m.xtype == 'videoMessage') && m.message.videoMessage.caption ? m.message.videoMessage.caption : (m.xtype == 'extendedTextMessage') && m.message.extendedTextMessage.text ? m.message.extendedTextMessage.text : (m.xtype == 'buttonsResponseMessage' && m.message.buttonsResponseMessage.selectedButtonId) ? m.message.buttonsResponseMessage.selectedButtonId : (m.xtype == 'templateButtonReplyMessage') && m.message.templateButtonReplyMessage.selectedId ? m.message.templateButtonReplyMessage.selectedId : ''
    const args = ordermessage.trim().split(/ +/).slice(1)
+   const messagesD = chats.slice(0).trim().split(/ +/).shift().toLowerCase()
    const botNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net'
    
 //══════════[ WAKTU ]══════════//
@@ -173,6 +175,10 @@ const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')
         if(time2 < "05:00:00"){
         var ucapanWaktu = 'Selamat malam 🏙'
 }
+
+const isUrl = (url) => {
+			return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
+		}
 
    const order = ordermessage.slice(1).trim().split(/ +/).shift().toLowerCase()
    const sender = m.sender
@@ -392,7 +398,7 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➥ ${prefix}pinterest
 ➥ ${prefix}anime
 
-𖣘 *ℝ𝔸ℕ𝔻𝕆𝕄 - 𝕄𝔼ℕ𝕌*
+𖣘 *ℝ𝔸ℕ𝔻𝕆𝕄 - ??𝔼ℕ𝕌*
 
 ➥ ${prefix}waifu
 ➥ ${prefix}simi
@@ -406,6 +412,7 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 ➥ ${prefix}storywa 
 ➥ ${prefix}asupan
 ➥ ${prefix}moodbooster
+➥ ${prefix}faktaunik
 
 𖣘 *𝕊𝕆𝕌ℕ𝔻 - 𝕄𝔼ℕ𝕌*
 
@@ -1298,21 +1305,6 @@ storee += `\n*「 *PLAY STORE* 」*\n
 }
 reply(storee)
 break
-case 'mediafire':
-if (q.includes('--help')) return reply(examlink) 
-if (args.length < 1) return reply('Mana Link Nya Ngab')
-if (!args[0].includes('mediafire')) return reply(`Link is not valid`)
-     reply(`*Loading....⌛*`)
-const teks1 = args.join(' ')
-const baby1 = await mediafireDl(teks1)
-const result4 = `*DATA DITEMUKAN*				
-🔖Judul : ${baby1[0].nama}
-🔖 Link : ${baby1[0].link}
-🔖 Size : ${baby1[0].size}				
-_Mengirim file..._`
-reply(result4)
-sock.sendMessage(from, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }) 
-break
 case 'hidetag':
 if (!isGroup) return reply('*Perintah ini khusus Grup*!')
 if (!isGroupAdmins && !isOwner) return reply('*Khusus Admin*!')
@@ -1614,10 +1606,10 @@ case 'cogan':
 sock.sendMessage(from, { image : { url : `https://zenzapis.xyz/randomimage/cogan?apikey=dc311285aa` }, caption : 'Nih Kak' }, { quoted : m})
 break
 case 'faktaunik':
-tes = await fetchJson(`https://zenzapis.xyz/randomtext/faktaunik?apikey=`)
-teks = tes.result.
-buffer = `https://telegra.ph/file/7188012d573871aaf4fa0.jpg`
-sock.sendMessage(from, {image:{url:buffer}, caption:teks}, {quoted:m})
+var data = await fetchJson(`https://docs-jojo.herokuapp.com/api/fakta-unik`)
+var caption = `*Tahukah kamu?*
+${data.result}`
+sock.sendMessage(from, { text: caption, footer: `kncol`, }, {quoted: m})
 break
 case 'quotes':
 var kotes2 = JSON.parse(fs.readFileSync("./FunctionMD/scrape/quotes.json"))
@@ -1990,7 +1982,7 @@ case 'internetmenu':{
 }
 break
 case 'randommenu':{
-	m.reply(from, '𖣘 *ℝ𝔸ℕ𝔻𝕆𝕄 - 𝕄𝔼ℕ𝕌*\n\n➥ #waifu\n➥ #simi\n➥ #awoo\n➥ #shinobu\n➥ #neko\n➥ #megumin\n➥ #couple\n➥ #aesthetic\n➥ #artinama\n➥ #storywa\n➥ #asupan\n➥ #moodbooster', { quoted : m } )
+	m.reply(from, '𖣘 *ℝ𝔸ℕ𝔻𝕆𝕄 - 𝕄𝔼ℕ𝕌*\n\n➥ #waifu\n➥ #simi\n➥ #awoo\n➥ #shinobu\n➥ #neko\n➥ #megumin\n➥ #couple\n➥ #aesthetic\n➥ #artinama\n➥ #storywa\n➥ #asupan\n➥ #moodbooster\n➥ #faktaunik', { quoted : m } )
 }
 break
 case 'soundmenu':{
