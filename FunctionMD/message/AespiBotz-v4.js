@@ -236,254 +236,282 @@ const MenuList = `*╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗*\n*║║║
 
 
 
-𖣘 *𝕀ℕ𝔽𝕆 - 𝔹𝕆𝕋*
+┌──⭓ *𝕀ℕ𝔽𝕆 - 𝔹𝕆𝕋*
+│
+│➥*Owner Name* : 𝐅𝐢𝐤𝐫𝐲𝐅𝐀
+│➥*Bot Name : ${Options.info.botName}*
+│➥*Library : Baileys-Md*
+│➥*Version :* *2.1.3*
+│➥*Nomor Owner* : wa.me/62895364443072
+│                                 : wa.me/6282245799282
+└───────⭓
 
-➥ *Owner Name* : 𝐅𝐢𝐤𝐫𝐲𝐅𝐀
-➥ *Bot Name : ${Options.info.botName}*
-➥ *Library : Baileys-Md*
-➥ *Version :* *2.1.3*
-➥ *Nomor Owner* : wa.me/62895364443072
-                                 : wa.me/6282245799282
-   
-𖣘 *𝔾ℝ𝕆𝕌ℙ - 𝕄𝔼ℕ𝕌*
+┌──⭓ *𝔾ℝ𝕆𝕌ℙ - 𝕄𝔼ℕ𝕌*
+│
+│➥${prefix}add
+│➥${prefix}kick
+│➥${prefix}promote
+│➥${prefix}demote
+│➥${prefix}setnamegroup
+│➥${prefix}grup <on/off>
+│➥${prefix}setdesc
+│➥${prefix}resetlink
+│➥${prefix}afk
+│➥${prefix}broadcast (Owner)
+│➥${prefix}hidetag <teks>
+│➥${prefix}tagall <teks>
+│➥${prefix}listadmin
+│➥${prefix}linkgc
+│➥${prefix}antilink on/off
+│
+└───────⭓
 
-➥ ${prefix}add
-➥ ${prefix}kick
-➥ ${prefix}promote
-➥ ${prefix}demote
-➥ ${prefix}setnamegroup
-➥ ${prefix}grup <on/off>
-➥ ${prefix}setdesc
-➥ ${prefix}resetlink
-➥ ${prefix}afk
-➥ ${prefix}broadcast (Owner)
-➥ ${prefix}hidetag <teks>
-➥ ${prefix}tagall <teks>
-➥ ${prefix}listadmin
-➥ ${prefix}linkgc
-➥ ${prefix}antilink on/off
+┌──⭓ *ℂ𝕆ℕ𝕍𝔼ℝ𝕋 - 𝕄𝔼ℕ𝕌*
+│
+│➥${prefix}toimg
+│➥${prefix}tomp4
+│➥${prefix}tomp3
+│➥${prefix}togif
+│➥${prefix}unduh
+│➥${prefix}stiker
+│➥${prefix}patrik
+│
+└───────⭓
 
-𖣘 *𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻 - 𝕄𝔼ℕ𝕌*
+┌──⭓ *𝔻𝕆𝕎ℕ𝕃𝕆𝔸𝔻 - 𝕄𝔼ℕ𝕌*
+│
+│➥${prefix}play <judul>
+│➥${prefix}twitter<link>
+│➥${prefix}tiktoknowm <link>
+│➥${prefix}tiktokmp3 <link>
+│➥${prefix}youtubemp3 <link>
+│➥${prefix}youtubemp4 <link>
+│➥${prefix}instagram <link>
+│
+└───────⭓
 
-➥ ${prefix}play <judul>
-➥ ${prefix}twitter<link>
-➥ ${prefix}tiktoknowm <link>
-➥ ${prefix}tiktokmp3 <link>
-➥ ${prefix}youtubemp3 <link>
-➥ ${prefix}youtubemp4 <link>
-➥ ${prefix}instagram <link>
+┌──⭓ *𝕀𝕄𝔸𝔾𝔼 - 𝕄𝔼ℕ𝕌*
+│
+│➥${prefix}meme
+│➥${prefix}cosplayer
+│➥${prefix}randomwallpaper
+│➥${prefix}wallpaperanime
+│➥${prefix}husbu
+│➥${prefix}naruto
+│➥${prefix}sasuke
+│➥${prefix}darkjokes
+│➥${prefix}darkjokes2
+│➥${prefix}onecak
+│➥${prefix}cecan
+│➥${prefix}cogan
+│
+└───────⭓
 
-𖣘 *ℂ𝕆ℕ𝕍𝔼ℝ𝕋 - 𝕄𝔼ℕ𝕌*
+┌──⭓ *𝔽𝕌ℕ - 𝕄𝔼ℕ𝕌*
+│
+│➥${prefix}apakah <query>
+│➥${prefix}bisakah <query>
+│➥${prefix}bagaimanakah <query>
+│➥${prefix}rate <query>
+│➥${prefix}cekganteng <nama>
+│➥${prefix}cekcantik <nama>
+│➥${prefix}ceksange <nama>
+│➥${prefix}cekgay <nama>
+│➥${prefix}ceklesbi<nama>
+│➥${prefix}kapankah<nama>
+│➥${prefix}cekmati<nama>
+│➥${prefix}quotes
+│➥${prefix}gombalan
+│
+└───────⭓
 
-➥ ${prefix}toimg
-➥ ${prefix}tomp4
-➥ ${prefix}tomp3
-➥ ${prefix}togif
-➥ ${prefix}unduh
-➥ ${prefix}sticker
-➥ ${prefix}patrik
+┌──⭓ *𝕋𝔼𝕏𝕋ℙℝ𝕆 - 𝕄𝔼ℕ𝕌*
+│
+│➥${prefix}arielpetir <teks>
+│➥${prefix}arielpetir2 <teks>
+│➥${prefix}bussines3d <teks> 
+│➥${prefix}stoneariel3d<teks>
+│➥${prefix}neon3dariel <teks>
+│➥${prefix}neon <teks>
+│➥${prefix}impresiveariel <teks>
+│➥${prefix}neondevil3dariel <teks>
+│➥${prefix}underwater3d <teks>
+│➥${prefix}bears3dariel <teks>
+│➥${prefix}grafityariel3d <teks>
+│➥${prefix}metaldarkariel <teks>
+│➥${prefix}halloweenariel <teks>
+│➥${prefix}captainamerikabyariel <teks>
+│➥${prefix}spacetext <teks>
+│➥${prefix}plastic3d <teks>
+│➥${prefix}dropwater3d <teks>
+│➥${prefix}avengerslogo3d <teks>
+│➥${prefix}harrypoter <teks>
+│➥${prefix}brokenglass <teks>
+│➥${prefix}wonderfulgravity3d <teks>
+│➥${prefix}futuristicneon3d <teks>
+│➥${prefix}skytext3d <teks>
+│➥${prefix}robotr2 <teks>
+│➥${prefix}natal3d <teks>
+│➥${prefix}matrixstyle <teks>
+│➥${prefix}waterpiperariel <teks>
+│➥${prefix}blackpink <teks>
+│➥${prefix}lightglow <teks>
+│➥${prefix}glass <teks>
+│➥${prefix}hoorror_blood <teks>
+│➥${prefix}sand <teks>
+│➥${prefix}sketch <teks>
+│➥${prefix}magma <teks>
+│➥${prefix}batman <teks>
+│➥${prefix}demon <teks>
+│➥${prefix}sci_fi <teks>
+│➥${prefix}ice <teks> 
+│➥${prefix}sea_metal <teks>
+│➥${prefix}skeleton <teks>
+│➥${prefix}transformer <teks>
+│➥${prefix}warning <teks>
+│➥${prefix}denim <teks>
+│
+└───────⭓
 
-𖣘 *𝕀𝕄𝔸𝔾𝔼 - 𝕄𝔼ℕ𝕌*
+┌──⭓ *𝕀ℕ𝔽𝕆 - 𝕄𝔼ℕ𝕌*
+│
+│➥ ${prefix}owner
+│➥ ${prefix}leaderboard
+│➥ ${prefix}runtime
+│➥ ${prefix}profile
+│➥ ${prefix}inventori
+│
+└───────⭓
 
-➥ ${prefix}meme
-➥ ${prefix}cosplayer
-➥ ${prefix}randomwallpaper
-➥ ${prefix}wallpaperanime
-➥ ${prefix}husbu
-➥ ${prefix}naruto
-➥ ${prefix}sasuke
-➥ ${prefix}darkjokes
-➥ ${prefix}darkjokes2
-➥ ${prefix}onecak
-➥ ${prefix}cecan
-➥ ${prefix}cogan
+┌──⭓ *𝕀ℕ𝕋𝔼ℝℕ𝔼𝕋 - 𝕄𝔼ℕ𝕌*
+│
+│➥ ${prefix}detiknews
+│➥ ${prefix}wiki
+│➥ ${prefix}gempa
+│➥ ${prefix}lirik
+│➥ ${prefix}jadwaltv
+│➥ ${prefix}covidindo
+│➥ ${prefix}pinterest
+│➥ ${prefix}anime
+│
+└───────⭓
 
-𖣘 *𝔽𝕌ℕ - 𝕄𝔼ℕ𝕌*
+┌──⭓ *ℝ𝔸ℕ𝔻𝕆𝕄 - 𝕄𝔼ℕ𝕌*
+│
+│➥ ${prefix}waifu
+│➥ ${prefix}simi
+│➥ ${prefix}awoo
+│➥ ${prefix}shinobu
+│➥ ${prefix}neko
+│➥ ${prefix}megumin
+│➥ ${prefix}couple
+│➥ ${prefix}aesthetic
+│➥ ${prefix}artinama
+│➥ ${prefix}storywa 
+│➥ ${prefix}asupan
+│➥ ${prefix}moodbooster
+│➥ ${prefix}faktaunik
+│
+└───────⭓
 
-➥ ${prefix}apakah <query>
-➥ ${prefix}bisakah <query>
-➥ ${prefix}bagaimanakah <query>
-➥ ${prefix}rate <query>
-➥ ${prefix}cekganteng <nama>
-➥ ${prefix}cekcantik <nama>
-➥ ${prefix}ceksange <nama>
-➥ ${prefix}cekgay <nama>
-➥ ${prefix}ceklesbi<nama>
-➥ ${prefix}kapankah<nama>
-➥ ${prefix}cekmati<nama>
-➥ ${prefix}quotes
-➥ ${prefix}gombalan
+┌──⭓ *𝕊𝕆𝕌ℕ𝔻 - 𝕄𝔼ℕ𝕌*
+│
+│➥ ${prefix}sound1
+│➥ ${prefix}sound2
+│➥ ${prefix}sound3
+│➥ ${prefix}sound4
+│➥ ${prefix}sound5
+│➥ ${prefix}sound6
+│➥ ${prefix}sound7
+│➥ ${prefix}sound8
+│➥ ${prefix}sound9
+│➥ ${prefix}sound10
+│➥ ${prefix}sound11
+│➥ ${prefix}sound12
+│➥ ${prefix}sound13
+│➥ ${prefix}sound14
+│➥ ${prefix}sound15
+│➥ ${prefix}sound16
+│➥ ${prefix}sound17
+│➥ ${prefix}sound19
+│➥ ${prefix}sound19
+│➥ ${prefix}sound20
+│➥ ${prefix}sound21
+│
+└───────⭓
 
-𖣘 *𝕋𝔼𝕏𝕋ℙℝ𝕆 - 𝕄𝔼ℕ𝕌*
+┌──⭓ *𝕂𝕀𝕊𝔸ℍ - 𝕄𝔼ℕ𝕌*
+│
+│➥ ${prefix}kisahnabi adam
+│➥ ${prefix}kisahnabi ayyub
+│➥ ${prefix}kisahnabi daud
+│➥ ${prefix}kisahnabi dzulkifli
+│➥ ${prefix}kisahnabi harun
+│➥ ${prefix}kisahnabi hud
+│➥ ${prefix}kisahnabi ibrahim
+│➥ ${prefix}kisahnabi idris
+│➥ ${prefix}kisahnabi ilyas
+│➥ ${prefix}kisahnabi ilyasa
+│➥ ${prefix}kisahnabi isa
+│➥ ${prefix}kisahnabi ishaq
+│➥ ${prefix}kisahnabi ismail
+│➥ ${prefix}kisahnabi luth
+│➥ ${prefix}kisahnabi muhammad
+│➥ ${prefix}kisahnabi musa
+│➥ ${prefix}kisahnabi nuh
+│➥ ${prefix}kisahnabi sholeh
+│➥ ${prefix}kisahnabi sulaiman
+│➥ ${prefix}kisahnabi syuaib
+│➥ ${prefix}kisahnabi yahya
+│➥ ${prefix}kisahnabi yaqub
+│➥ ${prefix}kisahnabi yunus
+│➥ ${prefix}kisahnabi yusuf
+│➥ ${prefix}kisahnabi zakariya
+│
+└───────⭓
 
-➥ ${prefix}arielpetir <teks>
-➥ ${prefix}arielpetir2 <teks>
-➥ ${prefix}bussines3d <teks> 
-➥ ${prefix}stoneariel3d<teks>
-➥ ${prefix}neon3dariel <teks>
-➥ ${prefix}neon <teks>
-➥ ${prefix}impresiveariel <teks>
-➥ ${prefix}neondevil3dariel <teks>
-➥ ${prefix}underwater3d <teks>
-➥ ${prefix}bears3dariel <teks>
-➥ ${prefix}grafityariel3d <teks>
-➥ ${prefix}metaldarkariel <teks>
-➥ ${prefix}halloweenariel <teks>
-➥ ${prefix}captainamerikabyariel <teks>
-➥ ${prefix}spacetext <teks>
-➥ ${prefix}plastic3d <teks>
-➥ ${prefix}dropwater3d <teks>
-➥ ${prefix}avengerslogo3d <teks>
-➥ ${prefix}harrypoter <teks>
-➥ ${prefix}brokenglass <teks>
-➥ ${prefix}wonderfulgravity3d <teks>
-➥ ${prefix}futuristicneon3d <teks>
-➥ ${prefix}skytext3d <teks>
-➥ ${prefix}robotr2 <teks>
-➥ ${prefix}natal3d <teks>
-➥ ${prefix}matrixstyle <teks>
-➥ ${prefix}waterpiperariel <teks>
-➥ ${prefix}blackpink <teks>
-➥ ${prefix}lightglow <teks>
-➥ ${prefix}glass <teks>
-➥ ${prefix}hoorror_blood <teks>
-➥ ${prefix}sand <teks>
-➥ ${prefix}sketch <teks>
-➥ ${prefix}magma <teks>
-➥ ${prefix}batman <teks>
-➥ ${prefix}demon <teks>
-➥ ${prefix}sci_fi <teks>
-➥ ${prefix}ice <teks> 
-➥ ${prefix}sea_metal <teks>
-➥ ${prefix}skeleton <teks>
-➥ ${prefix}transformer <teks>
-➥ ${prefix}warning <teks>
-➥ ${prefix}denim <teks>
+┌──⭓ *𝕋𝕆𝕆𝕃𝕊 - 𝕄𝔼ℕ𝕌*
+│
+│➥${prefix}surah
+│➥ ${prefix}tinyurl
+│➥ ${prefix}cuttly
+│➥ ${prefix}ceklokasi
+│
+└───────⭓
 
-𖣘 *𝕀ℕ𝔽𝕆 - 𝕄𝔼ℕ𝕌*
+┌──⭓ *ℝ𝕌𝕄𝕌𝕊 - 𝕄𝔼ℕ𝕌*
+│
+│➥ ${prefix}luas-segitiga
+│➥ ${prefix}kel-segitiga
+│➥ ${prefix}luas-persegi
+│➥ ${prefix}kel-persegi
+│➥ ${prefix}kuadrat
+│➥ ${prefix}kubik
+│
+└───────⭓
 
-➥ ${prefix}owner
-➥ ${prefix}leaderboard
-➥ ${prefix}runtime
-➥ ${prefix}profile
-➥ ${prefix}inventori
+┌──⭓ *𝕎𝔸ℝ - 𝕄𝔼ℕ𝕌*
+│
+│➥ ${prefix}virtexmenu
+│➥ ${prefix}wamenu
+│
+└───────⭓
 
-𖣘 *𝕀ℕ𝕋𝔼ℝℕ𝔼𝕋 - 𝕄𝔼ℕ𝕌*
-
-➥ ${prefix}detiknews
-➥ ${prefix}wiki
-➥ ${prefix}gempa
-➥ ${prefix}lirik
-➥ ${prefix}jadwaltv
-➥ ${prefix}covidindo
-➥ ${prefix}pinterest
-➥ ${prefix}anime
-
-𖣘 *ℝ𝔸ℕ𝔻𝕆𝕄 - ??𝔼ℕ𝕌*
-
-➥ ${prefix}waifu
-➥ ${prefix}simi
-➥ ${prefix}awoo
-➥ ${prefix}shinobu
-➥ ${prefix}neko
-➥ ${prefix}megumin
-➥ ${prefix}couple
-➥ ${prefix}aesthetic
-➥ ${prefix}artinama
-➥ ${prefix}storywa 
-➥ ${prefix}asupan
-➥ ${prefix}moodbooster
-➥ ${prefix}faktaunik
-
-𖣘 *𝕊𝕆𝕌ℕ𝔻 - 𝕄𝔼ℕ𝕌*
-
-➥ ${prefix}sound1
-➥ ${prefix}sound2
-➥ ${prefix}sound3
-➥ ${prefix}sound4
-➥ ${prefix}sound5
-➥ ${prefix}sound6
-➥ ${prefix}sound7
-➥ ${prefix}sound8
-➥ ${prefix}sound9
-➥ ${prefix}sound10
-➥ ${prefix}sound11
-➥ ${prefix}sound12
-➥ ${prefix}sound13
-➥ ${prefix}sound14
-➥ ${prefix}sound15
-➥ ${prefix}sound16
-➥ ${prefix}sound17
-➥ ${prefix}sound19
-➥ ${prefix}sound19
-➥ ${prefix}sound20
-➥ ${prefix}sound21
-
-𖣘 *𝕂𝕀𝕊𝔸ℍ - 𝕄𝔼ℕ𝕌*
-
-➥ ${prefix}kisahnabi adam
-➥ ${prefix}kisahnabi ayyub
-➥ ${prefix}kisahnabi daud
-➥ ${prefix}kisahnabi dzulkifli
-➥ ${prefix}kisahnabi harun
-➥ ${prefix}kisahnabi hud
-➥ ${prefix}kisahnabi ibrahim
-➥ ${prefix}kisahnabi idris
-➥ ${prefix}kisahnabi ilyas
-➥ ${prefix}kisahnabi ilyasa
-➥ ${prefix}kisahnabi isa
-➥ ${prefix}kisahnabi ishaq
-➥ ${prefix}kisahnabi ismail
-➥ ${prefix}kisahnabi luth
-➥ ${prefix}kisahnabi muhammad
-➥ ${prefix}kisahnabi musa
-➥ ${prefix}kisahnabi nuh
-➥ ${prefix}kisahnabi sholeh
-➥ ${prefix}kisahnabi sulaiman
-➥ ${prefix}kisahnabi syuaib
-➥ ${prefix}kisahnabi yahya
-➥ ${prefix}kisahnabi yaqub
-➥ ${prefix}kisahnabi yunus
-➥ ${prefix}kisahnabi yusuf
-➥ ${prefix}kisahnabi zakariya
-
-𖣘 *ℚ𝕌ℝ𝔸ℕ - 𝕄𝔼ℕ𝕌*
-
-➥${prefix}surah
-
-𖣘 *𝕋𝕆𝕆𝕃𝕊 - 𝕄𝔼ℕ𝕌*
-
-➥ ${prefix}tinyurl
-➥ ${prefix}cuttly
-➥ ${prefix}ceklokasi
-
-𖣘 *ℝ𝕌𝕄𝕌𝕊 - 𝕄𝔼ℕ𝕌*
-
-➥ ${prefix}luas-segitiga
-➥ ${prefix}kel-segitiga
-➥ ${prefix}luas-persegi
-➥ ${prefix}kel-persegi
-➥ ${prefix}kuadrat
-➥ ${prefix}kubik
-
-𖣘 *𝕎𝔸ℝ - 𝕄𝔼ℕ𝕌*
-
-➥ ${prefix}virtexmenu
-➥ ${prefix}wamenu
-
-𖣘 *𝔾𝔸𝕄𝔼 - 𝕄𝔼ℕ𝕌*
-
-➥ ${prefix}tebakgambar
-➥ ${prefix}kuismath
-➥ ${prefix}tebakkimia
-➥ ${prefix}asahotak
-➥ ${prefix}tebakkalimat
-➥ ${prefix}susunkata
-➥ ${prefix}caklontong
-➥ ${prefix}tekateki
-➥ ${prefix}tebakkabupaten
-➥ ${prefix}tebakbendera
-➥ ${prefix}tebakanime
+┌──⭓ *𝔾𝔸𝕄𝔼 - 𝕄𝔼ℕ𝕌*
+│
+│➥ ${prefix}tebakgambar
+│➥ ${prefix}kuismath
+│➥ ${prefix}tebakkimia
+│➥ ${prefix}asahotak
+│➥ ${prefix}tebakkalimat
+│➥ ${prefix}susunkata
+│➥ ${prefix}caklontong
+│➥ ${prefix}tekateki
+│➥ ${prefix}tebakkabupaten
+│➥ ${prefix}tebakbendera
+│➥ ${prefix}tebakanime
+│
+└───────⭓
 `
 
    const mentionByTag = m.xtype == "extendedTextMessage" && m.message.extendedTextMessage.contextInfo != null ? m.message.extendedTextMessage.contextInfo.mentionedJid : []
